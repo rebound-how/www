@@ -1,0 +1,24 @@
+<section class="homeProducts">
+  <div class="container">
+    <h2>Products</h2>
+    <ul class="homeProducts__list list-reset">
+      <li class="product">Lueur</li>
+      <li class="product">Chaos Toolkit</li>
+      <li class="product">Reliably</li>
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeProducts {
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-small);
+
+      @media (width > 50rem) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+</style>
