@@ -1,0 +1,36 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-medium);
+
+  max-width: 40rem;
+
+  .inputWrapper {
+    > label {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .required {
+        color: var(--text-color-dim);
+        font-size: 1.4rem;
+        text-transform: uppercase;
+      }
+    }
+
+    > input,
+    > textarea {
+      display: block;
+      padding: 0.3rem 0.6rem;
+      width: 100%;
+
+      border: none;
+      border-radius: var(--border-radius-s);
+
+      &:focus-visible {
+        outline: 0.2rem solid var(--orange-dim);
+        outline-offset: 0.2rem;
+      }
+    }
+  }
+}

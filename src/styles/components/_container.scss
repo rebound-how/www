@@ -1,0 +1,17 @@
+.container {
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: var(--space-small);
+  padding-left: var(--space-small);
+  width: 100%;
+  max-width: var(--max-width);
+
+  @media (min-width: 54rem) {
+    padding-right: var(--space-medium);
+    padding-left: var(--space-medium);
+  }
+
+  &--mini {
+    max-width: calc(60rem + 2 * var(--space-medium));
+  }
+}
