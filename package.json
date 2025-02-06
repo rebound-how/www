@@ -10,6 +10,11 @@
   },
   "dependencies": {
     "astro": "^5.2.5",
-    "sass": "^1.84.0"
+    "astro-vscode": "^2.15.4",
+    "sass": "^1.83.1"
+  },
+  "devDependencies": {
+    "prettier": "^3.4.2",
+    "prettier-plugin-astro": "^0.14.1"
   }
 }
