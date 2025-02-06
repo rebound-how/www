@@ -1,0 +1,92 @@
+.contact {
+  display: grid;
+  grid-template-columns:
+    max(calc(50vw - (var(--max-width) / 2)), var(--space-small))
+    repeat(12, 1fr)
+    max(calc(50vw - (var(--max-width) / 2)), var(--space-small));
+  overflow-x: hidden;
+
+  background-color: var(--text-color-bright);
+
+  color: white;
+
+  @media (min-width: 54rem) {
+    gap: var(--space-small);
+  }
+
+  @media (min-width: 72rem) {
+    gap: var(--space-medium);
+  }
+
+  &__header {
+    grid-column: 2 / span 12;
+
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-large);
+
+    @media (min-width: 54rem) {
+      grid-column: 2 / span 6;
+
+      min-height: 100vh;
+      padding-bottom: var(--space-small);
+    }
+
+    .siteLogo {
+      display: flex;
+      align-items: baseline;
+      gap: 0.2rem;
+
+      color: white;
+      font-family: var(--body-font);
+      font-size: 2.4rem;
+      font-weight: 600;
+
+      @media (min-width: 32rem) {
+        font-size: 3rem;
+      }
+
+      &:hover {
+        text-decoration: none;
+      }
+
+      &::after {
+        content: "";
+
+        display: block;
+        height: 1.2rem;
+        width: 1.2rem;
+
+        background: var(--orange);
+        border-radius: 50%;
+      }
+    }
+
+    h1 {
+      font-family: var(--body-font);
+      font-size: clamp(10rem, 14vw, 20rem);
+      font-weight: 900;
+    }
+  }
+
+  &__content {
+    grid-column: 2 / span 12;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-top: var(--space-small);
+    padding-bottom: var(--space-large);
+
+    @media (min-width: 54rem) {
+      grid-column: 8 / span 6;
+
+      padding-bottom: var(--space-small);
+    }
+
+    .form {
+      textarea {
+        resize: vertical;
+      }
+    }
+  }
+}

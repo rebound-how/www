@@ -1,0 +1,90 @@
+// Default accessibility styles for class-less buttons
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  &:not([class]):focus-visible {
+    outline: 0.2rem dotted var(--orange);
+    outline-offset: 0.2rem;
+  }
+}
+
+.button {
+  display: inline-block;
+  padding: 0.8rem 1.6rem;
+
+  border: none;
+  border-radius: 2rem;
+  cursor: pointer;
+
+  font-size: 1.6rem;
+
+  transition: all 0.1s ease-in-out;
+
+  &:hover {
+    text-decoration: none;
+  }
+
+  &:active {
+    box-shadow: none;
+
+    transform: translateY(0.1rem);
+  }
+
+  &--primary {
+    background-color: var(--orange);
+
+    color: white;
+
+    &:visited {
+      color: white;
+    }
+
+    &:hover {
+      background-color: var(--orange-bright);
+
+      color: white;
+    }
+
+    &:focus-visible {
+      outline: 0.2rem solid var(--orange);
+      outline-offset: 0.2rem;
+    }
+  }
+
+  &--icon {
+    position: relative;
+
+    display: grid;
+    place-content: center;
+    height: 4rem;
+    width: 4rem;
+    padding: 0;
+
+    background-color: var(--grey-200);
+    outline: 0 solid white;
+    outline-offset: 0;
+
+    color: var(--text-color);
+
+    transition: all 0.3s ease-in-out;
+
+    > svg {
+      z-index: 2;
+
+      height: 2rem;
+      width: 2rem;
+    }
+
+    &:visited {
+      color: var(--text-color);
+    }
+
+    &:hover {
+      outline-width: 2rem;
+      outline-offset: -2rem;
+
+      color: var(--text-color-bright);
+    }
+  }
+}
