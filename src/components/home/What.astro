@@ -1,30 +1,35 @@
-<section class="homeWhat">
+<section class="homeWhat homeSection">
   <div class="container">
-    <span>What is Rebound</span>
-    <h2>
-      Rebound is an open-source suite to make sure your users can rely on you
-    </h2>
+    <header class="homeSectionHeader">
+      <span class="homeSectionHeader__sup">What is Rebound?</span>
+      <h2>
+        Rebound is an open-source suite<br /> to make sure your users can rely on
+        you
+      </h2>
+    </header>
 
     <ul class="homeWhat__list list-reset">
       <li>
         <h3>System Agnostic</h3>
+        <p>Rebound's toolbox is not bound to a particular system.</p>
         <p>
-          Rebound's toolbox is not bound to a particular system. Whether it's
-          Cloud, On-Premise or "It's complicated", Rebound follows.
+          Whether it's Cloud, On-Premise or "It's complicated", Rebound follows.
         </p>
       </li>
       <li>
         <h3>Metrics Driven</h3>
+        <p>With knowledge comes wisdom.</p>
         <p>
-          With knowledge comes wisdom. Rebound has a mission to turn resilience
-          from a perceived cost to a must-have strategic asset.
+          Rebound has a mission to turn resilience from a perceived cost to a
+          must-have strategic asset.
         </p>
       </li>
       <li>
         <h3>Scales With You</h3>
+        <p>Grow at your own pace.</p>
         <p>
-          Grow at your own pace. Rebound adapts to your journey—from early
-          development to enterprise operations.
+          Rebound adapts to your journey—from early development to enterprise
+          operations.
         </p>
       </li>
     </ul>
@@ -33,13 +38,28 @@
 
 <style lang="scss">
   .homeWhat {
+    header {
+      h2 {
+        br {
+          display: none;
+
+          @media (width > 40rem) {
+            display: block;
+          }
+        }
+      }
+    }
     &__list {
       display: grid;
       grid-template-columns: 1fr;
-      gap: var(--space-small);
+      gap: var(--space-large);
 
       @media (width > 50rem) {
         grid-template-columns: repeat(3, 1fr);
+      }
+
+      p {
+        // font-size: 1.6rem;
       }
     }
   }

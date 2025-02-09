@@ -3,14 +3,15 @@
   --body-font: system-ui, sans-serif;
   --monospace-font: Consolas, Monaco, "Andale Mono", "Ubuntu Mono", monospace;
   --display-font: system-ui, sans-serif;
-  --base-font-size: 1.8rem;
+  --base-font-size: 1.6rem;
 
   --text-color: var(--grey-700);
   --text-color-bright: var(--grey-800);
   --text-color-dim: var(--grey-500);
   --link-color: var(--pink-500);
   --button-color: var(--grey-900);
-  --arrowLink-color: var(--blue-500);
+
+  --accent-color: rebeccapurple;
 
   // Layout
   --max-width: 130rem;

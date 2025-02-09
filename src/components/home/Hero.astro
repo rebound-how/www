@@ -1,10 +1,25 @@
 <section class="homeHero">
   <div class="container">
     <h1 class="text-center">
-      The open source resilience suite to propel you forward
+      The open source resilience suite<br /> to propel you forward
     </h1>
     <p class="text-center">Always be there for your users.</p>
   </div>
 </section>
 
-<style lang="scss"></style>
+<style lang="scss">
+  .homeHero {
+    display: grid;
+    place-content: center;
+    min-height: 70vh;
+
+    h1 {
+      font-weight: 900;
+    }
+
+    p {
+      color: var(--text-color-dim);
+      font-size: 2.4rem;
+    }
+  }
+</style>

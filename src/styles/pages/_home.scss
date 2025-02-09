@@ -1,0 +1,24 @@
+.home {
+  .homeSection {
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    border-top: 0.1rem dashed rebeccapurple;
+    border-bottom: 0.1rem dashed rebeccapurple;
+
+    .homeSectionHeader {
+      h2 {
+        margin-top: 0;
+        max-width: 30ch;
+
+        font-weight: 500;
+      }
+
+      &__sup {
+        color: var(--accent-color);
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
