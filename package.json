@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "astro": "^5.2.5",
+    "astro-icon": "^1.1.5",
     "astro-vscode": "^2.15.4",
     "sass": "^1.83.1"
   },

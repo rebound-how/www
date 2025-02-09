@@ -1,3 +1,7 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <section class="homeWhat homeSection">
   <div class="container">
     <header class="homeSectionHeader">
@@ -10,26 +14,33 @@
 
     <ul class="homeWhat__list list-reset">
       <li>
+        <div class="homeWhat__icon">
+          <Icon name="feather/layers" />
+        </div>
         <h3>System Agnostic</h3>
-        <p>Rebound's toolbox is not bound to a particular system.</p>
         <p>
-          Whether it's Cloud, On-Premise or "It's complicated", Rebound follows.
+          <strong>Rebound's toolbox is not bound to a particular system.</strong
+          > Whether it's Cloud, On-Premise or "It's complicated", Rebound follows.
         </p>
       </li>
       <li>
+        <div class="homeWhat__icon">
+          <Icon name="feather/bar-chart" />
+        </div>
         <h3>Metrics Driven</h3>
-        <p>With knowledge comes wisdom.</p>
         <p>
-          Rebound has a mission to turn resilience from a perceived cost to a
-          must-have strategic asset.
+          <strong>With knowledge comes wisdom.</strong> Rebound has a mission to
+          turn resilience from a perceived cost to a must-have strategic asset.
         </p>
       </li>
       <li>
+        <div class="homeWhat__icon">
+          <Icon name="feather/maximize-2" />
+        </div>
         <h3>Scales With You</h3>
-        <p>Grow at your own pace.</p>
         <p>
-          Rebound adapts to your journey—from early development to enterprise
-          operations.
+          <strong>Grow at your own pace.</strong> Rebound adapts to your journey—from
+          early development to enterprise operations.
         </p>
       </li>
     </ul>
@@ -57,9 +68,23 @@
       @media (width > 50rem) {
         grid-template-columns: repeat(3, 1fr);
       }
+    }
 
-      p {
-        // font-size: 1.6rem;
+    &__icon {
+      position: relative;
+
+      display: grid;
+      place-content: center;
+      overflow: hidden;
+      height: 6rem;
+      width: 6rem;
+
+      border: 0.4rem solid rebeccapurple;
+      border-radius: 50%;
+
+      svg {
+        height: 2rem;
+        width: auto;
       }
     }
   }
