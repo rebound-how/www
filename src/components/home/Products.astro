@@ -1,105 +1,144 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <section class="homeProducts homeSection">
   <div class="container">
     <header class="homeSectionHeader">
-      <h2>Products</h2>
+      <h2 class="text-center">Products</h2>
     </header>
     <ul class="homeProducts__list list-reset">
       <li class="product">
-        <header>
-          <h2>Lueur</h2>
-          <p>Developer Friendly Reliability</p>
+        <header class="product__block product__block--header">
+          <h2>
+            <span class="screen-reader-text">Lueur</span>
+            <Icon name="lueur" />
+          </h2>
+          <p>Developer-Friendly Reliability</p>
         </header>
-        <ul>
-          <li>
-            <h3>Lightning-Fast</h3>
-            <p>
-              A Rust-powered CLI that simulates network disruptions right on
-              your local machine.
-            </p>
-          </li>
-          <li>
-            <h3>Real-World Scenarios</h3>
-            <p>
-              Easily configure tests via YAML to mimic latencies, bandwidth
-              constraints, packet loss, and HTTP errors.
-            </p>
-          </li>
-          <li>
-            <h3>CI Integration</h3>
-            <p>
-              Automatically run these tests within your pipeline and receive
-              detailed, actionable reports.
-            </p>
-          </li>
-        </ul>
+        <div class="product__block">
+          <h3>Lightning-Fast</h3>
+          <p>
+            A Rust-powered CLI that simulates network disruptions right on your
+            local machine.
+          </p>
+        </div>
+        <div class="product__block">
+          <h3>Real-World Scenarios</h3>
+          <p>
+            Easily configure tests via YAML to mimic latencies, bandwidth
+            constraints, packet loss, and HTTP errors.
+          </p>
+        </div>
+        <div class="product__block">
+          <h3>CI Integration</h3>
+          <p>
+            Automatically run these tests within your pipeline and receive
+            detailed, actionable reports.
+          </p>
+        </div>
       </li>
       <li class="product">
-        <h2>Chaos Toolkit</h2>
-        <p>Reliability Policies in Action</p>
-        <ul>
-          <li>
-            <h3>Executable Reliability Goals</h3>
-            <p>
-              Convert your resilience objectives into clear, measurable tests.
-            </p>
-          </li>
-          <li>
-            <h3>Flexible Execution</h3>
-            <p>
-              Run tests on-demand, in staging, or with every release to validate
-              your system’s robustness.
-            </p>
-          </li>
-          <li>
-            <h3>Clear Feedback</h3>
-            <p>
-              Gain actionable insights that let you address vulnerabilities
-              before they escalate.
-            </p>
-          </li>
-        </ul>
+        <header class="product__block product__block--header">
+          <h2>
+            <span class="screen-reader-text">Chaos Toolkit</span>
+            <Icon name="chaos-toolkit" />
+          </h2>
+          <p>Reliability Policies in Action</p>
+        </header>
+        <div class="product__block">
+          <h3>Executable Reliability Goals</h3>
+          <p>
+            Convert your resilience objectives into clear, measurable tests.
+          </p>
+        </div>
+        <div class="product__block">
+          <h3>Flexible Execution</h3>
+          <p>
+            Run tests on-demand, in staging, or with every release to validate
+            your system’s robustness.
+          </p>
+        </div>
+        <div class="product__block">
+          <h3>Clear Feedback</h3>
+          <p>
+            Gain actionable insights that let you address vulnerabilities before
+            they escalate.
+          </p>
+        </div>
       </li>
       <li class="product">
-        <h2>Reliably</h2>
-        <p>Orchestrate Your Resilience Strategy</p>
-        <ul>
-          <li>
-            <h3>Centralized Management</h3>
-            <p>
-              Coordinate and monitor resilience tests across your entire
-              infrastructure from a single platform.
-            </p>
-          </li>
-          <li>
-            <h3>Comprehensive Visibility</h3>
-            <p>
-              Automatically map system health, track key resilience metrics, and
-              identify improvement areas.
-            </p>
-          </li>
-          <li>
-            <h3>AI-Powered Experimentation</h3>
-            <p>
-              Leverage genAI to generate targeted tests that evolve as your
-              system does.
-            </p>
-          </li>
-        </ul>
+        <header class="product__block product__block--header">
+          <h2>
+            <span class="screen-reader-text">Reliably</span>
+            <Icon name="reliably" />
+          </h2>
+          <p>Orchestrate Your Resilience Strategy</p>
+        </header>
+        <div class="product__block">
+          <h3>Centralized Management</h3>
+          <p>
+            Coordinate and monitor resilience tests across your entire
+            infrastructure from a single platform.
+          </p>
+        </div>
+        <div class="product__block">
+          <h3>Comprehensive Visibility</h3>
+          <p>
+            Automatically map system health, track key resilience metrics, and
+            identify improvement areas.
+          </p>
+        </div>
+        <div class="product__block">
+          <h3>AI-Powered Experimentation</h3>
+          <p>
+            Leverage genAI to generate targeted tests that evolve as your system
+            does.
+          </p>
+        </div>
       </li>
     </ul>
   </div>
-</section>
 
-<style lang="scss">
-  .homeProducts {
-    &__list {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: var(--space-small);
+  <style lang="scss">
+    .homeProducts {
+      &__list {
+        .product + .product {
+          margin-top: var(--space-large);
+        }
 
-      @media (width > 50rem) {
-        grid-template-columns: repeat(3, 1fr);
+        .product {
+          display: grid;
+          place-content: center;
+          grid-template-columns: repeat(2, 1fr);
+          gap: var(--space-large);
+          height: 100vh;
+
+          &__block {
+            padding: var(--space-medium);
+
+            &:not(.product__block--header) {
+              background-color: var(--grey-100);
+              border-radius: var(--border-radius-m);
+            }
+
+            &--header {
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+
+              h2 {
+                margin-bottom: 0;
+              }
+
+              p {
+                text-align: center;
+              }
+            }
+          }
+        }
       }
     }
-  }
-</style>
+  </style>
+</section>
