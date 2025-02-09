@@ -25,9 +25,9 @@ body {
   line-height: 1.5;
 
   ::selection {
-    background-color: var(--orange-dim);
+    background-color: var(--accent-color);
 
-    color: var(--text-color-bright);
+    color: white;
   }
 }
 
