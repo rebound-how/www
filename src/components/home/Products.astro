@@ -7,138 +7,179 @@ import { Icon } from "astro-icon/components";
     <header class="homeSectionHeader">
       <h2 class="text-center">Products</h2>
     </header>
-    <ul class="homeProducts__list list-reset">
-      <li class="product">
-        <header class="product__block product__block--header">
-          <h2>
+    <div class="homeProducts__list">
+      <article class="product">
+        <header class="product__header">
+          <h3>
             <span class="screen-reader-text">Lueur</span>
             <Icon name="lueur" />
-          </h2>
+          </h3>
           <p>Developer-Friendly Reliability</p>
         </header>
-        <div class="product__block">
-          <h3>Lightning-Fast</h3>
-          <p>
-            A Rust-powered CLI that simulates network disruptions right on your
-            local machine.
-          </p>
-        </div>
-        <div class="product__block">
-          <h3>Real-World Scenarios</h3>
-          <p>
-            Easily configure tests via YAML to mimic latencies, bandwidth
-            constraints, packet loss, and HTTP errors.
-          </p>
-        </div>
-        <div class="product__block">
-          <h3>CI Integration</h3>
-          <p>
-            Automatically run these tests within your pipeline and receive
-            detailed, actionable reports.
-          </p>
-        </div>
-      </li>
-      <li class="product">
-        <header class="product__block product__block--header">
-          <h2>
+        <ul class="productInfo list-reset">
+          <li class="productInfo__item">
+            <h4>Lightning-Fast</h4>
+            <p>
+              A Rust-powered CLI that simulates network disruptions right on
+              your local machine.
+            </p>
+          </li>
+          <li class="productInfo__item">
+            <h4>Real-World Scenarios</h4>
+            <p>
+              Easily configure tests via YAML to mimic latencies, bandwidth
+              constraints, packet loss, and HTTP errors.
+            </p>
+          </li>
+          <li class="productInfo__item">
+            <h4>CI Integration</h4>
+            <p>
+              Automatically run these tests within your pipeline and receive
+              detailed, actionable reports.
+            </p>
+          </li>
+        </ul>
+      </article>
+      <article class="product">
+        <header class="product__header">
+          <h3>
             <span class="screen-reader-text">Chaos Toolkit</span>
             <Icon name="chaos-toolkit" />
-          </h2>
+          </h3>
           <p>Reliability Policies in Action</p>
         </header>
-        <div class="product__block">
-          <h3>Executable Reliability Goals</h3>
-          <p>
-            Convert your resilience objectives into clear, measurable tests.
-          </p>
-        </div>
-        <div class="product__block">
-          <h3>Flexible Execution</h3>
-          <p>
-            Run tests on-demand, in staging, or with every release to validate
-            your system’s robustness.
-          </p>
-        </div>
-        <div class="product__block">
-          <h3>Clear Feedback</h3>
-          <p>
-            Gain actionable insights that let you address vulnerabilities before
-            they escalate.
-          </p>
-        </div>
-      </li>
-      <li class="product">
-        <header class="product__block product__block--header">
-          <h2>
+        <ul class="productInfo list-reset">
+          <li class="productInfo__item">
+            <h4>Executable Reliability Goals</h4>
+            <p>
+              Convert your resilience objectives into clear, measurable tests.
+            </p>
+          </li>
+          <li class="productInfo__item">
+            <h4>Flexible Execution</h4>
+            <p>
+              Run tests on-demand, in staging, or with every release to validate
+              your system’s robustness.
+            </p>
+          </li>
+          <li class="productInfo__item">
+            <h4>Clear Feedback</h4>
+            <p>
+              Gain actionable insights that let you address vulnerabilities
+              before they escalate.
+            </p>
+          </li>
+        </ul>
+      </article>
+      <article class="product">
+        <header class="product__header">
+          <h3>
             <span class="screen-reader-text">Reliably</span>
             <Icon name="reliably" />
-          </h2>
+          </h3>
           <p>Orchestrate Your Resilience Strategy</p>
         </header>
-        <div class="product__block">
-          <h3>Centralized Management</h3>
-          <p>
-            Coordinate and monitor resilience tests across your entire
-            infrastructure from a single platform.
-          </p>
-        </div>
-        <div class="product__block">
-          <h3>Comprehensive Visibility</h3>
-          <p>
-            Automatically map system health, track key resilience metrics, and
-            identify improvement areas.
-          </p>
-        </div>
-        <div class="product__block">
-          <h3>AI-Powered Experimentation</h3>
-          <p>
-            Leverage genAI to generate targeted tests that evolve as your system
-            does.
-          </p>
-        </div>
-      </li>
-    </ul>
+        <ul class="productInfo list-reset">
+          <li class="productInfo__item">
+            <h4>Centralized Management</h4>
+            <p>
+              Coordinate and monitor resilience tests across your entire
+              infrastructure from a single platform.
+            </p>
+          </li>
+          <li class="productInfo__item">
+            <h4>Comprehensive Visibility</h4>
+            <p>
+              Automatically map system health, track key resilience metrics, and
+              identify improvement areas.
+            </p>
+          </li>
+          <li class="productInfo__item">
+            <h4>AI-Powered Experimentation</h4>
+            <p>
+              Leverage genAI to generate targeted tests that evolve as your
+              system does.
+            </p>
+          </li>
+        </ul>
+      </article>
+    </div>
   </div>
+</section>
 
-  <style lang="scss">
-    .homeProducts {
-      &__list {
-        .product + .product {
-          margin-top: var(--space-large);
+<style lang="scss">
+  .homeProducts {
+    &__list {
+      .product + .product {
+        margin-top: var(--space-large);
+      }
+
+      .product {
+        // height: 100vh;
+
+        // animation: move-in linear both;
+        // animation-timeline: view();
+        // animation-range: entry 50% entry 150%;
+
+        &__header {
+          position: sticky;
+          top: var(--space-large);
+
+          // display: flex;
+          // flex-direction: column;
+          // align-items: center;
+          // justify-content: center;
+          margin-top: 50vh;
+          margin-bottom: 50vh;
+          // margin-bottom: 100vh;
+
+          h3 {
+            margin-bottom: 0;
+            // width: 100%;
+
+            svg {
+              height: 12rem;
+              width: auto;
+              max-width: 80%;
+            }
+          }
+
+          p {
+            // text-align: center;
+          }
         }
 
-        .product {
+        .productInfo {
           display: grid;
           place-content: center;
-          grid-template-columns: repeat(2, 1fr);
+          grid-template-columns: repeat(3, 1fr);
           gap: var(--space-large);
-          height: 100vh;
+          padding-top: 12rem;
+          margin-bottom: 100vh;
 
-          &__block {
-            padding: var(--space-medium);
+          &__item {
+            padding: var(--space-small);
 
-            &:not(.product__block--header) {
-              background-color: var(--grey-100);
-              border-radius: var(--border-radius-m);
-            }
+            background-color: var(--grey-100);
+            border-radius: var(--border-radius-m);
+          }
+        }
 
-            &--header {
-              display: flex;
-              flex-direction: column;
-              align-items: center;
-              justify-content: center;
-
-              h2 {
-                margin-bottom: 0;
-              }
-
-              p {
-                text-align: center;
-              }
-            }
+        &:last-child {
+          .productInfo {
+            margin-bottom: var(--space-large);
           }
         }
       }
     }
-  </style>
-</section>
+  }
+
+  // @keyframes move-in {
+  //   from {
+  //     opacity: 0;
+  //   }
+  //   to {
+  //     opacity: 1;
+  //   }
+  // }
+</style>
