@@ -1,10 +1,10 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 
-import Hero from "@/components/home/Hero.astro";
-import What from "@/components/home/What.astro";
-import Features from "@/components/home/Features.astro";
-import Products from "@/components/home/Products.astro";
+import HomeHero from "@/components/home/HomeHero.astro";
+import WhatIsRebound from "@/components/home/WhatIsRebound.astro";
+import FeaturesList from "@/components/home/FeaturesList.astro";
+import ProductsList from "@/components/home/ProductsList.astro";
 ---
 
 <Layout
@@ -12,9 +12,9 @@ import Products from "@/components/home/Products.astro";
   description="Rebound is an open-source suite to make sure your users can rely on you"
 >
   <main class="home">
-    <Hero />
-    <What />
-    <Products />
-    <Features />
+    <HomeHero />
+    <WhatIsRebound />
+    <ProductsList />
+    <FeaturesList />
   </main>
 </Layout>
