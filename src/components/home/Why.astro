@@ -1,8 +1,217 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
 <section class="homeWhy homeSection">
   <div class="container">
     <header class="homeSectionHeader">
       <span class="homeSectionHeader__sup">Why Rebound?</span>
-      <h2>Section title</h2>
+      <h2>Features.</h2>
     </header>
+    <ul class="homeWhy__list list-reset">
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Network Fault Injector</h3>
+        <p>
+          Gain understanding of how your services react to poor network
+          conditions
+        </p>
+        <span>Lueur</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Rapid Testing Scenarios</h3>
+        <p>
+          Turn Reliability into non-regression scenarios from your CI build
+        </p>
+        <span>Lueur, Chaos Toolkit</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Reliability As Code</h3>
+        <p>
+          Declare reliability tests as code stored like any other assets for
+          review and visibility.
+        </p>
+        <span>Lueur, Chaos Toolkit</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Comprehensive Systems Coverage</h3>
+        <p>
+          Ensure all parts of your systems can be verified and kept in check,
+          including your legacy systems.
+        </p>
+        <span>Lueur, Chaos Toolkit, Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Extensible By Design</h3>
+        <p>
+          If something is amiss, easily extend for your own unique requirements.
+        </p>
+        <span>Chaos Toolkit</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Safety Included</h3>
+        <p>
+          Remain in control and rapidly terminate tests when your system is
+          under fire.
+        </p>
+        <span>Chaos Toolkit, Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Teams Communication</h3>
+        <p>
+          Let teams know when a reliability test is underway, via Slack, email
+          or a WebHook.
+        </p>
+        <span>Chaos Toolkit, Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Reporting</h3>
+        <p>
+          Build reports that can be easily shared throughout your organization.
+        </p>
+        <span>Chaos Toolkit, Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Orchestration</h3>
+        <p>
+          Orchestrate the fleet of reliability tests and policies
+          across your system from a unified platform.
+        </p>
+        <span>Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Periodic Scheduling</h3>
+        <p>
+          Run tests once or periodically automatically.
+        </p>
+        <span>Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Open Telemetry Support</h3>
+        <p>
+          Make your tests fully part of your operations via Open Telemetry
+          traces and metrics.
+        </p>
+        <span>Chaos Toolkit, Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>GenAI Assistant</h3>
+        <p>
+          Use the gentle power of GenAI to help you create reliability tests.
+        </p>
+        <span>Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Effort Scoring</h3>
+        <p>
+          Keep an eye on engineering effort with a simple scoring system.
+        </p>
+        <span>Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Template</h3>
+        <p>
+          Create tests and policies template to let teams parameterized them in
+          their own context.
+        </p>
+        <span>Chaos Toolkit, Reliably</span>
+      </li>
+      <li>
+        <div class="homeWhy__icon">
+          <Icon name="feather/layers" />
+        </div>
+        <h3>Runs anywhere</h3>
+        <p>
+          Rebound products can run on any system and are simple to deploy
+          locally, as containers, in a Kubernets cluster or from a serverless
+          ecosystem.
+        </p>
+        <span>Lueur, Chaos Toolkit, Reliably</span>
+      </li>
+    </ul>
   </div>
 </section>
+
+<style lang="scss">
+  .homeWhy {
+    header {
+      h2 {
+        br {
+          display: none;
+
+          @media (width > 40rem) {
+            display: block;
+          }
+        }
+      }
+    }
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-large);
+
+      @media (width > 50rem) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    &__icon {
+      position: relative;
+
+      display: grid;
+      place-content: center;
+      overflow: hidden;
+      height: 6rem;
+      width: 6rem;
+
+      border: 0.4rem solid rebeccapurple;
+      border-radius: 50%;
+
+      svg {
+        height: 2rem;
+        width: auto;
+      }
+    }
+  }
+</style>
