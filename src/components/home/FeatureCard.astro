@@ -1,0 +1,41 @@
+---
+import type { Feature } from "@/types/types";
+
+interface Props {
+  feature: Feature;
+}
+
+const { feature } = Astro.props;
+---
+
+<article class="featureCard">
+  <div class="featureCard__icon"></div>
+  <h3 class="featureCard__title">{feature.title}</h3>
+  <div class="featureCard__content">
+    {feature.content.map((p) => <p set:html={p} />)}
+  </div>
+</article>
+
+<style lang="scss">
+  .featureCard {
+    --background-gradient-start: var(--sand-300);
+    --background-gradient-stop: var(--sand-200);
+
+    height: 100%;
+    padding: var(--space-small);
+
+    // background: linear-gradient(
+    //   in oklch to bottom,
+    //   var(--background-gradient-start),
+    //   var(--background-gradient-stop)
+    // );
+    border: 0.1rem solid var(--background-gradient-start);
+    border-radius: var(--border-radius-m);
+
+    &__title {
+      margin-top: 0;
+
+      font-size: 2rem;
+    }
+  }
+</style>
