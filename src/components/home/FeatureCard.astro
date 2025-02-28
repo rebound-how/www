@@ -27,10 +27,10 @@ const { feature } = Astro.props;
 
 <style lang="scss">
   .featureCard {
-    --background-gradient-start: #371030;
-    --background-gradient-start: var(--grey-200);
-    --background-gradient-stop: #290622;
-    --background-gradient-stop: var(--grey-200);
+    // --background-gradient-start: #371030;
+    // --background-gradient-start: var(--grey-200);
+    // --background-gradient-stop: #290622;
+    // --background-gradient-stop: var(--grey-200);
     // --border-color: white;
 
     --icon-color: var(--green-400);
@@ -41,12 +41,8 @@ const { feature } = Astro.props;
     overflow: hidden;
     padding: var(--space-small);
 
-    background: linear-gradient(
-      in oklch to bottom,
-      var(--background-gradient-start),
-      var(--background-gradient-stop)
-    );
-    border: 0.1rem solid var(--border-color);
+    background-color: var(--grey-200);
+    // border: 0.1rem solid var(--border-color);
     border-radius: var(--border-radius-m);
     box-shadow: var(--box-shadow-diffuse);
 

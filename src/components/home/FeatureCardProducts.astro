@@ -35,7 +35,7 @@ function returnSupportClass(p: ProductName): string {
 }
 function returnSupportSentence(p: ProductName): string {
   if (isFeatured(p)) {
-    return `Feature provided by ${translateProductName(p)}`;
+    return `Available in ${translateProductName(p)}`;
   } else {
     return "";
   }
@@ -62,7 +62,7 @@ function returnSupportSentence(p: ProductName): string {
     display: inline-flex;
     align-items: center;
     gap: 1rem;
-    padding: 0.6rem 1.2rem;
+    padding: 0.6rem 0.8rem;
 
     background-color: var(--grey-300);
     border-radius: 1.8rem;
