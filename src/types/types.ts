@@ -4,7 +4,7 @@ export interface Feature {
   title: string;
   content: string[];
   icon: string;
-  product: NonEmptyArray<ProductName>;
+  products: NonEmptyArray<ProductName>;
 }
 
-type ProductName = "lueur" | "reliably" | "chaostoolkit";
+export type ProductName = "lueur" | "reliably" | "chaostoolkit";

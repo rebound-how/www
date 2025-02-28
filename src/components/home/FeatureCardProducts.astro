@@ -1,0 +1,85 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { Feature, ProductName } from "@/types/types";
+
+interface Props {
+  products: Feature["products"];
+}
+
+const { products } = Astro.props;
+
+const availableProducts: Feature["products"] = [
+  "lueur",
+  "chaostoolkit",
+  "reliably",
+];
+
+function translateProductName(p: ProductName) {
+  switch (p) {
+    case "lueur":
+      return "Lueur";
+    case "reliably":
+      return "Reliably";
+    case "chaostoolkit":
+      return "Chaos Toolkit";
+  }
+}
+
+function isFeatured(p: ProductName): boolean {
+  return products.includes(p);
+}
+
+function returnSupportClass(p: ProductName): string {
+  return isFeatured(p) ? "isFeatured" : "isNotFeatured";
+}
+function returnSupportSentence(p: ProductName): string {
+  if (isFeatured(p)) {
+    return `Feature provided by ${translateProductName(p)}`;
+  } else {
+    return "";
+  }
+}
+---
+
+<ul class="products list-reset">
+  {
+    availableProducts.map((p) => (
+      <li
+        class:list={["product", `product--${returnSupportClass(p)}`]}
+        title={returnSupportSentence(p)}
+      >
+        <span class="productIcon">
+          <Icon name={`products-marks/${p}`} />
+        </span>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .products {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 1.2rem;
+
+    background-color: var(--grey-300);
+    border-radius: 1.8rem;
+
+    .product {
+      display: flex;
+      align-items: center;
+
+      &--isNotFeatured {
+        opacity: 0.3;
+      }
+
+      svg {
+        display: block;
+        height: auto;
+        width: 2.4rem;
+      }
+    }
+  }
+</style>
