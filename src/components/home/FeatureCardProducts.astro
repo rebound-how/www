@@ -15,7 +15,7 @@ const availableProducts: Feature["products"] = [
   "reliably",
 ];
 
-function translateProductName(p: ProductName) {
+function translateProductName(p: ProductName): string {
   switch (p) {
     case "lueur":
       return "Lueur";
@@ -33,22 +33,33 @@ function isFeatured(p: ProductName): boolean {
 function returnSupportClass(p: ProductName): string {
   return isFeatured(p) ? "isFeatured" : "isNotFeatured";
 }
-function returnSupportSentence(p: ProductName): string {
-  if (isFeatured(p)) {
-    return `Available in ${translateProductName(p)}`;
+function returnSupportSentence(): string {
+  // if (isFeatured(p)) {
+  //   return `Available in ${translateProductName(p)}`;
+  // } else {
+  //   return "";
+  // }
+  const productsArr = products.map((p) => translateProductName(p));
+  const productsStr = productsArr.join(", ");
+  const index = productsStr.indexOf(", ");
+  const lastIndex = productsStr.lastIndexOf(", ");
+  if (lastIndex === -1) {
+    return `Available in ${productsStr}`;
   } else {
-    return "";
+    const and = index === lastIndex ? " and " : ", and ";
+    return (
+      `Available in ${productsStr.substring(0, lastIndex)}` +
+      and +
+      productsStr.substring(lastIndex + 2)
+    );
   }
 }
 ---
 
-<ul class="products list-reset">
+<ul class="products list-reset" title={returnSupportSentence()}>
   {
     availableProducts.map((p) => (
-      <li
-        class:list={["product", `product--${returnSupportClass(p)}`]}
-        title={returnSupportSentence(p)}
-      >
+      <li class:list={["product", `product--${returnSupportClass(p)}`]}>
         <span class="productIcon">
           <Icon name={`products-marks/${p}`} />
         </span>
