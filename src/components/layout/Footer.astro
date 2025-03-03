@@ -1,11 +1,51 @@
-<footer>
-  <div class="container">The footer</div>
+---
+import Rebound from "@/components/Rebound.astro";
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer__logo">
+      <a href="/">
+        <Rebound color="white" size="3.2rem" ; />
+      </a>
+    </div>
+    <div class="footer__links">
+      <a href="/legal">Legal notice</a>
+    </div>
+  </div>
 </footer>
 
 <style lang="scss">
-  footer {
+  .footer {
     margin-top: auto;
-    padding-top: var(--space-small);
-    padding-bottom: var(--space-small);
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    background-color: var(--grey-900);
+
+    &__logo {
+      display: flex;
+      justify-content: center;
+
+      a {
+        display: block;
+
+        &:hover {
+          text-decoration: none;
+        }
+      }
+    }
+
+    &__links {
+      display: flex;
+      justify-content: center;
+      gap: var(--space-small);
+      margin-top: var(--space-large);
+
+      a {
+        color: var(--grey-500);
+        font-size: 1.6rem;
+      }
+    }
   }
 </style>
