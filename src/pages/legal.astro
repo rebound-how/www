@@ -25,6 +25,11 @@ import ProductsList from "@/components/home/ProductsList.astro";
             35690 Acigné<br />
             France
           </address>
+          <p class="legal__contact">
+            Contact: <a href="mailto:sylvain.hellegouarch@gmail.com"
+              >sylvain.hellegouarch@gmail.com</a
+            >
+          </p>
         </div>
         <div>
           <p>
@@ -58,6 +63,10 @@ import ProductsList from "@/components/home/ProductsList.astro";
       @media (width > 50rem) {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
+
+    &__contact {
+      margin-top: var(--space-medium);
     }
   }
 </style>
