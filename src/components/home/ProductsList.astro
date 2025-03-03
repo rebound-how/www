@@ -151,11 +151,28 @@ Report saved as <span class="term-yellow">report.json</span>`;
 
 <style lang="scss">
   .homeProducts {
+    --product-space: calc(2 * var(--space-large));
+
+    h2 {
+      // margin-top: var(--space-large);
+      margin-bottom: 0;
+
+      color: var(--grey-100);
+      font-size: 12rem;
+      text-shadow: var(--box-shadow-diffuse);
+      text-transform: uppercase;
+    }
+
     &__list {
       .productWrapper {
         display: grid;
         place-content: center;
-        height: 100vh;
+        margin-top: var(--product-space);
+        margin-bottom: var(--product-space);
+
+        & + .productWrapper {
+          padding-top: var(--product-space);
+        }
 
         &:nth-child(2n) {
           .product__content {
