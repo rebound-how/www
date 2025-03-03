@@ -1,0 +1,284 @@
+---
+import { Icon } from "astro-icon/components";
+
+import Terminal from "@/components/Terminal.astro";
+
+const lueurTerminal = `$ lueur scenario run --scenario scenario.yaml
+
+<span class="term-dim">================ Running Scenarios ================</span>
+
+<span class="term-green">⡏</span>  4/4  Latency Increase By 30ms Steps From Downstream  <span class="term-green term-big">&#9646;</span><span class="term-green term-big">&#9646;</span><span class="term-green term-big">&#9646;</span><span class="term-red term-big">&#9646;</span>
+<span class="term-green">⡏</span>  1/1  Within Allowed Latency While Bandwidth At 5 bytes/second  <span class="term-green term-big">&#9646;</span>
+<span class="term-green">⡏</span>  1/1  Circuit Breaker Takes Care of 404  <span class="term-red term-big">&#9646;</span>
+<span class="term-green">⡏</span>  1/1  Packet loss has no impact on service performance  <span class="term-green term-big">&#9646;</span>
+
+<span class="term-dim">===================== Summary =====================</span>
+
+Tests run: <span class="term-teal">7</span>, Tests failed: <span class="term-red">2</span>
+Total time: 2.4s
+
+Report saved as <span class="term-yellow">report.json</span>`;
+---
+
+<section class="homeProducts homeSection">
+  <header class="homeSectionHeader">
+    <h2 class="text-center">Products</h2>
+  </header>
+  <div class="homeProducts__list">
+    <div class="productWrapper container">
+      <article class="product" style="--shadow-color: 240, 141, 54;">
+        <header class="product__header">
+          <h3>
+            <span class="screen-reader-text">Lueur</span>
+            <Icon name="lueur" />
+          </h3>
+          <p>Developer-Friendly Reliability</p>
+        </header>
+        <div class="product__content">
+          <ul class="productInfo list-reset">
+            <li class="productInfo__item">
+              <Icon name="feather/zap" />
+              <h4>Lightning-Fast</h4>
+              <p>
+                A Rust-powered CLI that simulates network disruptions right on
+                your local machine.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/layers" />
+              <h4>Real-World Scenarios</h4>
+              <p>
+                Easily configure tests via YAML to mimic latencies, bandwidth
+                constraints, packet loss, and HTTP errors.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/truck" />
+              <h4>CI Integration</h4>
+              <p>
+                Automatically run these tests within your pipeline and receive
+                detailed, actionable reports.
+              </p>
+            </li>
+          </ul>
+          <div class="productMedia">
+            <Terminal content={lueurTerminal} />
+          </div>
+        </div>
+      </article>
+    </div>
+    <div class="productWrapper container">
+      <article class="product" style="--shadow-color: 243, 182, 70;">
+        <header class="product__header">
+          <h3>
+            <span class="screen-reader-text">Chaos Toolkit</span>
+            <Icon name="chaos-toolkit" />
+          </h3>
+          <p>Reliability Policies in Action</p>
+        </header>
+        <div class="product__content">
+          <ul class="productInfo list-reset">
+            <li class="productInfo__item">
+              <Icon name="feather/activity" />
+              <h4>Executable Policies</h4>
+              <p>
+                Convert your resilience objectives into clear, measurable tests.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/bell" />
+              <h4>Clear Feedback</h4>
+              <p>
+                Gain actionable insights that let you address vulnerabilities
+                before they escalate.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/tool" />
+              <h4>Fully Customizable</h4>
+              <p>
+                Cover all your systems, whether it's legacy, Cloud, On-Premise
+                or "It's complicated", Rebound follows you.
+              </p>
+            </li>
+          </ul>
+          <div class="productMedia"></div>
+        </div>
+      </article>
+    </div>
+    <div class="productWrapper container">
+      <article class="product" style="--shadow-color: 232, 62, 142;">
+        <header class="product__header">
+          <h3>
+            <span class="screen-reader-text">Reliably</span>
+            <Icon name="reliably" />
+          </h3>
+          <p>Orchestrate Your Resilience Strategy</p>
+        </header>
+        <div class="product__content">
+          <ul class="productInfo list-reset">
+            <li class="productInfo__item">
+              <Icon name="feather/crosshair" />
+              <h4>Centralized Management</h4>
+              <p>
+                Coordinate and monitor resilience tests across your entire
+                infrastructure from a single platform.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/eye" />
+              <h4>Unified Visibility</h4>
+              <p>
+                Automatically map system health, track key resilience metrics,
+                and identify improvement areas.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/hexagon" />
+              <h4>AI-Powered Policies</h4>
+              <p>
+                Leverage GenAI to generate targeted tests and policies that
+                evolve as your system does.
+              </p>
+            </li>
+          </ul>
+          <div class="productMedia"></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<style lang="scss">
+  .homeProducts {
+    --product-space: calc(2 * var(--space-large));
+
+    h2 {
+      // margin-top: var(--space-large);
+      margin-bottom: 0;
+
+      color: var(--grey-100);
+      font-size: 12rem;
+      text-shadow: var(--box-shadow-diffuse);
+      text-transform: uppercase;
+    }
+
+    &__list {
+      .productWrapper {
+        display: grid;
+        place-content: center;
+        margin-top: var(--product-space);
+        margin-bottom: var(--product-space);
+
+        & + .productWrapper {
+          padding-top: var(--product-space);
+        }
+
+        &:nth-child(2n) {
+          .product__content {
+            grid-template-columns: 2fr 1fr;
+
+            .productInfo {
+              grid-column-start: 2;
+              grid-row-start: 1;
+            }
+
+            .productMedia {
+              grid-column-start: 1;
+              grid-row-start: 1;
+            }
+          }
+        }
+      }
+
+      .product {
+        &__header {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          gap: var(--space-small);
+          margin-bottom: var(--space-large);
+
+          h3 {
+            margin-bottom: 0;
+
+            svg {
+              height: 6rem;
+              width: auto;
+            }
+          }
+
+          p {
+            color: var(--text-color-dim);
+            font-size: 2.4rem;
+          }
+        }
+
+        &__content {
+          display: grid;
+          grid-template-columns: 1fr 2fr;
+          overflow: hidden;
+
+          background-color: white;
+          border-radius: var(--border-radius-l);
+          box-shadow: var(--box-shadow-diffuse);
+
+          transition: all 0.3s ease-in 0.5s;
+
+          &:hover {
+            box-shadow:
+              0 0.2rem 0.6rem rgba(var(--shadow-color), 0.025),
+              0 0.4rem 0.8rem rgba(var(--shadow-color), 0.05),
+              0 1.6rem 1.6rem rgba(var(--shadow-color), 0.08),
+              0 1.6rem 4.8rem rgba(var(--shadow-color), 0.1);
+
+            transition: all 0.3s ease-in;
+
+            .productInfo__item {
+              svg {
+                color: rgba(var(--shadow-color), 1);
+
+                transition: all 0.3s ease-in;
+              }
+            }
+          }
+
+          .productInfo {
+            padding: var(--space-medium);
+
+            > li + li {
+              margin-top: var(--space-medium);
+            }
+
+            &__item {
+              svg {
+                height: 2.4rem;
+                width: auto;
+
+                color: var(--text-color-dim);
+
+                transition: all 0.3s ease-in 0.5s;
+              }
+
+              h4 {
+                margin-top: 0;
+                margin-bottom: 0;
+              }
+
+              p {
+                color: var(--text-color-dim);
+              }
+            }
+          }
+
+          .productMedia {
+            height: 100%;
+
+            background-color: blue;
+          }
+        }
+      }
+    }
+  }
+</style>

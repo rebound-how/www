@@ -3,9 +3,6 @@
     padding-top: var(--space-large);
     padding-bottom: var(--space-large);
 
-    border-top: 0.1rem dashed rebeccapurple;
-    border-bottom: 0.1rem dashed rebeccapurple;
-
     .homeSectionHeader {
       h2 {
         margin-top: 0;
@@ -15,7 +12,7 @@
       }
 
       &__sup {
-        color: var(--accent-color);
+        color: var(--text-color-dim);
         font-weight: 700;
         text-transform: uppercase;
       }

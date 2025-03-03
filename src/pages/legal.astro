@@ -1,0 +1,63 @@
+---
+import Layout from "@/layouts/Layout.astro";
+
+import HomeHero from "@/components/home/HomeHero.astro";
+import WhatIsRebound from "@/components/home/WhatIsRebound.astro";
+import FeaturesList from "@/components/home/FeaturesList.astro";
+import ProductsList from "@/components/home/ProductsList.astro";
+---
+
+<Layout
+  title="Legal notice"
+  description="Rebound is an open-source suite to make sure your users can rely on you"
+>
+  <main class="legal">
+    <div class="container">
+      <h1>Legal notice</h1>
+      <div class="legal__content">
+        <div>
+          <p>
+            This website is published by<br />
+            <strong>Sylvain Hellegouarch</strong><br />
+          </p>
+          <address>
+            14 rue du Grand Pré<br />
+            35690 Acigné<br />
+            France
+          </address>
+        </div>
+        <div>
+          <p>
+            Hosting provided by<br />
+            <strong>Netlify</strong><br />
+          </p>
+          <address>
+            131 Albright Way<br />
+            Los Gatos, CA 95032<br />
+            USA
+          </address>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
+
+<style lang="scss">
+  .legal {
+    h1 {
+      margin-top: var(--space-large);
+    }
+
+    &__content {
+      display: grid;
+      gap: var(--space-large);
+      margin-top: var(--space-large);
+
+      font-size: 2rem;
+
+      @media (width > 50rem) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+  }
+</style>

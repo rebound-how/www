@@ -1,0 +1,91 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { Feature, ProductName } from "@/types/types";
+
+interface Props {
+  products: Feature["products"];
+}
+
+const { products } = Astro.props;
+
+const availableProducts: Feature["products"] = [
+  "lueur",
+  "chaostoolkit",
+  "reliably",
+];
+
+function translateProductName(p: ProductName): string {
+  switch (p) {
+    case "lueur":
+      return "Lueur";
+    case "reliably":
+      return "Reliably";
+    case "chaostoolkit":
+      return "Chaos Toolkit";
+  }
+}
+
+function isFeatured(p: ProductName): boolean {
+  return products.includes(p);
+}
+
+function returnSupportClass(p: ProductName): string {
+  return isFeatured(p) ? "isFeatured" : "isNotFeatured";
+}
+function returnSupportSentence(): string {
+  const productsArr = products.map((p) => translateProductName(p));
+  const productsStr = productsArr.join(", ");
+  const index = productsStr.indexOf(", ");
+  const lastIndex = productsStr.lastIndexOf(", ");
+  if (lastIndex === -1) {
+    return `Available in ${productsStr}`;
+  } else {
+    const and = index === lastIndex ? " and " : ", and ";
+    return (
+      `Available in ${productsStr.substring(0, lastIndex)}` +
+      and +
+      productsStr.substring(lastIndex + 2)
+    );
+  }
+}
+---
+
+<ul class="products list-reset" title={returnSupportSentence()}>
+  {
+    availableProducts.map((p) => (
+      <li class:list={["product", `product--${returnSupportClass(p)}`]}>
+        <span class="productIcon">
+          <Icon name={`products-marks/${p}`} />
+        </span>
+      </li>
+    ))
+  }
+</ul>
+
+<style lang="scss">
+  .products {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.6rem 0.8rem;
+
+    background-color: var(--grey-300);
+    border-radius: 1.8rem;
+
+    .product {
+      display: flex;
+      align-items: center;
+
+      &--isNotFeatured {
+        opacity: 0.3;
+      }
+
+      svg {
+        display: block;
+        height: auto;
+        width: 2.4rem;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,181 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { Feature } from "@/types/types";
+
+import FeatureCard from "@/components/home/FeatureCard.astro";
+
+const features: Feature[] = [
+  {
+    title: "Network Fault Injector",
+    content: [
+      "Gain understanding of how your services react to poor network conditions",
+    ],
+    icon: "feather/layers",
+    products: ["lueur"],
+  },
+  {
+    title: "Rapid Testing Scenarios",
+    content: [
+      "Turn Reliability into non-regression scenarios from your CI build",
+    ],
+    icon: "feather/layers",
+    products: ["lueur", "chaostoolkit"],
+  },
+  {
+    title: "Reliability As Code",
+    content: [
+      "Declare reliability tests as code stored like any other assets for review and visibility.",
+    ],
+    icon: "feather/layers",
+    products: ["lueur", "chaostoolkit"],
+  },
+  {
+    title: "Comprehensive Systems Coverage",
+    content: [
+      "Ensure all parts of your systems can be verified and kept in check, including your legacy systems.",
+    ],
+    icon: "feather/layers",
+    products: ["lueur", "chaostoolkit", "reliably"],
+  },
+  {
+    title: "Extensible By Design",
+    content: [
+      "If something is amiss, easily extend for your own unique requirements.",
+    ],
+    icon: "feather/layers",
+    products: ["chaostoolkit"],
+  },
+  {
+    title: "Safety Included",
+    content: [
+      "Remain in control and rapidly terminate tests when your system is under fire.",
+    ],
+    icon: "feather/layers",
+    products: ["chaostoolkit", "reliably"],
+  },
+  {
+    title: "Teams Communication",
+    content: [
+      "Let teams know when a reliability test is underway, via Slack, email or a webhook.",
+    ],
+    icon: "feather/layers",
+    products: ["chaostoolkit", "reliably"],
+  },
+  {
+    title: "Reporting",
+    content: [
+      "Build reports that can be easily shared throughout your organization.",
+    ],
+    icon: "feather/layers",
+    products: ["chaostoolkit", "reliably"],
+  },
+  {
+    title: "Orchestration",
+    content: [
+      "Orchestrate the fleet of reliability tests and policies across your system from a unified platform.",
+    ],
+    icon: "feather/layers",
+    products: ["reliably"],
+  },
+  {
+    title: "Periodic Scheduling",
+    content: ["Run tests once or periodically automatically."],
+    icon: "feather/layers",
+    products: ["reliably"],
+  },
+  {
+    title: "Open Telemetry Support",
+    content: [
+      "Make your tests fully part of your operations via Open Telemetry traces and metrics.",
+    ],
+    icon: "feather/layers",
+    products: ["chaostoolkit", "reliably"],
+  },
+  {
+    title: "GenAI Assistant",
+    content: [
+      "Use the gentle power of GenAI to help you create reliability tests.",
+    ],
+    icon: "feather/layers",
+    products: ["reliably"],
+  },
+  {
+    title: "Effort Scoring",
+    content: [
+      "Keep an eye on engineering effort with a simple scoring system.",
+    ],
+    icon: "feather/layers",
+    products: ["reliably"],
+  },
+  {
+    title: "Template",
+    content: [
+      "Create tests and policies template to let teams parameterized them in their own context.",
+    ],
+    icon: "feather/layers",
+    products: ["chaostoolkit", "reliably"],
+  },
+  {
+    title: "Runs anywhere",
+    content: [
+      "Rebound products can run on any system and are simple to deploy locally, as containers, in a Kubernets cluster or from a serverless ecosystem.",
+    ],
+    icon: "feather/layers",
+    products: ["lueur", "chaostoolkit", "reliably"],
+  },
+];
+---
+
+<section class="features homeSection">
+  <div class="container">
+    <header class="homeSectionHeader">
+      <span class="homeSectionHeader__sup">Why Rebound?</span>
+      <h2>Features</h2>
+    </header>
+    <ul class="features__list list-reset">
+      {
+        features.map((feature) => (
+          <li>
+            <FeatureCard feature={feature} />
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style lang="scss">
+  .features {
+    // background-color: #180414;
+
+    header {
+      h2 {
+        br {
+          display: none;
+
+          @media (width > 40rem) {
+            display: block;
+          }
+        }
+      }
+    }
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-medium);
+
+      @media (width > 40rem) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (width > 60rem) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      @media (width > 80rem) {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+  }
+</style>

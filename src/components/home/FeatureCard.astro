@@ -1,0 +1,134 @@
+---
+import { Icon } from "astro-icon/components";
+
+import type { Feature } from "@/types/types";
+
+import FeatureCardProducts from "@/components/home/FeatureCardProducts.astro";
+
+interface Props {
+  feature: Feature;
+}
+
+const { feature } = Astro.props;
+---
+
+<article class="featureCard">
+  <div class="featureCard__header">
+    <FeatureCardProducts products={feature.products} />
+  </div>
+  <h3 class="featureCard__title">{feature.title}</h3>
+  <div class="featureCard__content">
+    {feature.content.map((p) => <p set:html={p} />)}
+  </div>
+  <div class="featureCard__support">
+    <div>Hello</div>
+  </div>
+</article>
+
+<style lang="scss">
+  .featureCard {
+    // --background-gradient-start: #371030;
+    // --background-gradient-start: var(--grey-200);
+    // --background-gradient-stop: #290622;
+    // --background-gradient-stop: var(--grey-200);
+    // --border-color: white;
+
+    --icon-color: var(--green-400);
+
+    position: relative;
+
+    height: 100%;
+    overflow: hidden;
+    padding: var(--space-small);
+
+    background-color: var(--grey-200);
+    // border: 0.1rem solid var(--border-color);
+    border-radius: var(--border-radius-m);
+    box-shadow: var(--box-shadow-diffuse);
+
+    &__header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: var(--space-small);
+    }
+
+    &__icon {
+      svg {
+        color: var(--icon-color);
+        height: 3.6rem;
+        width: auto;
+      }
+    }
+
+    &__title {
+      margin-top: 0;
+
+      // color: white;
+      font-size: 2rem;
+    }
+
+    &__content {
+      color: var(--text-color-dim);
+    }
+
+    &__support {
+      position: absolute;
+      top: 0;
+      left: var(--space-medium);
+      z-index: 2;
+
+      display: block;
+      height: 100%;
+      width: 100%;
+
+      filter: drop-shadow(1rem 0 3rem rgb(0 0 0));
+
+      transform: translateX(100%);
+      transition: transform 0.3s var(--custom-easing) 0.3s;
+
+      // > div {
+      //   --border-width: 3.6rem;
+
+      //   height: 100%;
+      //   padding: var(--space-small);
+      //   padding-left: var(--border-width);
+      //   width: 100%;
+
+      //   clip-path: polygon(var(--space-small) 0%, 100% 0%, 100% 100%, 0% 100%);
+
+      //   background-color: white;
+      //   // box-shadow: var(--box-shadow-diffuse);
+
+      //   // &::after {
+      //   //   content: "";
+
+      //   //   position: absolute;
+      //   //   top: 0;
+      //   //   left: 0;
+      //   //   z-index: 2;
+
+      //   //   display: block;
+      //   //   height: 100%;
+      //   //   width: var(--border-width);
+
+      //   //   clip-path: polygon(
+      //   //     var(--space-small) 0%,
+      //   //     100% 0%,
+      //   //     calc(var(--border-width) - var(--space-small)) 100%,
+      //   //     0% 100%
+      //   //   );
+
+      //   //   background-color: var(--icon-color);
+      //   // }
+      // }
+    }
+
+    // &:hover {
+    //   .featureCard__support {
+    //     transform: translateX(0);
+    //     transition: transform 0.3s var(--custom-easing);
+    //   }
+    // }
+  }
+</style>

@@ -1,0 +1,76 @@
+---
+interface Props {
+  color?: string;
+  size?: string;
+}
+
+const { color, size } = Astro.props;
+
+const c = color ? color : "hsl(240, 3.7%, 9%)";
+const s = size ? size : "2.4rem";
+---
+
+<span class="rebound-logo">
+  <span class="letter letter--1">R</span><span class="letter letter--2">e</span
+  ><span class="letter letter--3">b</span><span class="letter letter--4">o</span
+  ><span class="letter letter--5">u</span><span class="letter letter--6">n</span
+  ><span class="letter letter--7">d</span>
+</span>
+
+<style lang="scss" define:vars={{ c, s }}>
+  .rebound-logo {
+    color: var(--c);
+    font-family: var(--display-font);
+    font-size: var(--s);
+    text-decoration: none;
+    text-transform: uppercase;
+
+    .letter {
+      font-weight: calc(200 + 600 * var(--w));
+
+      transition: font-weight 0.2s ease-in-out;
+
+      &:nth-child(1) {
+        --w: 0;
+      }
+      &:nth-child(2) {
+        --w: 0.16;
+      }
+      &:nth-child(3) {
+        --w: 0.33;
+      }
+      &:nth-child(4) {
+        --w: 0.5;
+      }
+      &:nth-child(5) {
+        --w: 0.67;
+      }
+      &:nth-child(6) {
+        --w: 0.83;
+      }
+      &:nth-child(7) {
+        --w: 1;
+      }
+    }
+
+    &:hover {
+      .letter {
+        --w: 0;
+
+        &:hover {
+          --w: 1;
+        }
+
+        &:hover + .letter,
+        &:has(+ .letter:hover) {
+          --w: 0.67;
+        }
+
+        &:hover + .letter + .letter,
+        &:has(+ .letter + .letter:hover) {
+          --w: 0.33;
+        }
+      }
+    }
+  }
+</style>
