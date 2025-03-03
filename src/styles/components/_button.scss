@@ -4,7 +4,7 @@ button,
 [type="reset"],
 [type="submit"] {
   &:not([class]):focus-visible {
-    outline: 0.2rem dotted var(--orange);
+    outline: 0.2rem dotted blue;
     outline-offset: 0.2rem;
   }
 }
@@ -15,6 +15,7 @@ button,
 
   border: none;
   border-radius: 2rem;
+  box-shadow: var(--box-shadow-diffuse);
   cursor: pointer;
 
   font-size: 1.6rem;
@@ -22,6 +23,7 @@ button,
   transition: all 0.1s ease-in-out;
 
   &:hover {
+    box-shadow: var(--box-shadow-sharp);
     text-decoration: none;
   }
 
@@ -32,59 +34,13 @@ button,
   }
 
   &--primary {
-    background-color: var(--orange);
+    background-color: var(--grey-800);
 
     color: white;
 
+    &:hover,
     &:visited {
       color: white;
-    }
-
-    &:hover {
-      background-color: var(--orange-bright);
-
-      color: white;
-    }
-
-    &:focus-visible {
-      outline: 0.2rem solid var(--orange);
-      outline-offset: 0.2rem;
-    }
-  }
-
-  &--icon {
-    position: relative;
-
-    display: grid;
-    place-content: center;
-    height: 4rem;
-    width: 4rem;
-    padding: 0;
-
-    background-color: var(--grey-200);
-    outline: 0 solid white;
-    outline-offset: 0;
-
-    color: var(--text-color);
-
-    transition: all 0.3s ease-in-out;
-
-    > svg {
-      z-index: 2;
-
-      height: 2rem;
-      width: 2rem;
-    }
-
-    &:visited {
-      color: var(--text-color);
-    }
-
-    &:hover {
-      outline-width: 2rem;
-      outline-offset: -2rem;
-
-      color: var(--text-color-bright);
     }
   }
 }

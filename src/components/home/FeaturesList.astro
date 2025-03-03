@@ -142,6 +142,11 @@ const features: Feature[] = [
         ))
       }
     </ul>
+    <div class="features__link">
+      <a href="https://github.com/rebound-how/" class="button button--primary">
+        Get started
+      </a>
+    </div>
   </div>
 </section>
 
@@ -176,6 +181,12 @@ const features: Feature[] = [
       @media (width > 80rem) {
         grid-template-columns: repeat(4, 1fr);
       }
+    }
+
+    &__link {
+      display: flex;
+      justify-content: center;
+      margin-top: var(--space-medium);
     }
   }
 </style>
