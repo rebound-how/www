@@ -1,5 +1,23 @@
 ---
 import { Icon } from "astro-icon/components";
+
+import Terminal from "@/components/Terminal.astro";
+
+const lueurTerminal = `$ lueur scenario run --scenario scenario.yaml
+
+<span class="term-dim">================ Running Scenarios ================</span>
+
+<span class="term-green">⡏</span>  4/4  Latency Increase By 30ms Steps From Downstream  <span class="term-green term-big">&#9646;</span><span class="term-green term-big">&#9646;</span><span class="term-green term-big">&#9646;</span><span class="term-red term-big">&#9646;</span>
+<span class="term-green">⡏</span>  1/1  Within Allowed Latency While Bandwidth At 5 bytes/second  <span class="term-green term-big">&#9646;</span>
+<span class="term-green">⡏</span>  1/1  Circuit Breaker Takes Care of 404  <span class="term-red term-big">&#9646;</span>
+<span class="term-green">⡏</span>  1/1  Packet loss has no impact on service performance  <span class="term-green term-big">&#9646;</span>
+
+<span class="term-dim">===================== Summary =====================</span>
+
+Tests run: <span class="term-teal">7</span>, Tests failed: <span class="term-red">2</span>
+Total time: 2.4s
+
+Report saved as <span class="term-yellow">report.json</span>`;
 ---
 
 <section class="homeProducts homeSection">
@@ -43,7 +61,9 @@ import { Icon } from "astro-icon/components";
               </p>
             </li>
           </ul>
-          <div class="productMedia"></div>
+          <div class="productMedia">
+            <Terminal content={lueurTerminal} />
+          </div>
         </div>
       </article>
     </div>
@@ -238,7 +258,7 @@ import { Icon } from "astro-icon/components";
           .productMedia {
             height: 100%;
 
-            background-color: black;
+            background-color: blue;
           }
         }
       }

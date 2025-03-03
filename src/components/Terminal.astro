@@ -1,0 +1,110 @@
+---
+interface Props {
+  content: string;
+}
+
+const { content } = Astro.props;
+---
+
+<div class="terminal">
+  <div class="terminal__header">
+    <span class="terminal__controls"></span>
+  </div>
+  <pre class="terminal__content" set:html={content} />
+</div>
+
+<style lang="scss">
+  .terminal {
+    height: 100%;
+
+    background-color: var(--terminal-background);
+
+    &__header {
+      padding: 0.6rem var(--space-small) 0;
+    }
+
+    &__controls {
+      background-color: var(--terminal-controls-close);
+
+      &:before,
+      &:after {
+        content: "";
+      }
+
+      &,
+      &:before,
+      &:after {
+        position: relative;
+        display: inline-block;
+        height: 1.2rem;
+        width: 1.2rem;
+        border-radius: 50%;
+      }
+
+      &::before {
+        position: absolute;
+        top: 0;
+        left: 1.8rem;
+
+        background-color: var(--terminal-controls-mini);
+      }
+
+      &::after {
+        position: absolute;
+        top: 0;
+        left: 3.6rem;
+
+        background-color: var(--terminal-controls-maxi);
+      }
+    }
+
+    &__content {
+      padding: var(--space-small);
+
+      color: var(--terminal-text);
+    }
+  }
+</style>
+
+<style is:global>
+  .terminal {
+    --terminal-background: var(--grey-700);
+    --terminal-border: var(--grey-800);
+    --terminal-controls-close: hsl(5, 80%, 65%);
+    --terminal-controls-mini: hsl(40, 88%, 64%);
+    --terminal-controls-maxi: hsl(114, 48%, 55%);
+
+    --terminal-text: var(--grey-200);
+    --terminal-text-dim: var(--grey-500);
+
+    --terminal-green: hsl(91, 54%, 38%);
+    --terminal-red: hsl(4, 76%, 42%);
+    --terminal-yellow: hsl(53, 51%, 57%);
+    --terminal-teal: hsl(183, 59%, 63%);
+
+    .term-dim {
+      color: var(--terminal-text-dim);
+    }
+
+    .term-green {
+      color: var(--terminal-green);
+    }
+
+    .term-red {
+      color: var(--terminal-red);
+    }
+
+    .term-yellow {
+      color: var(--terminal-yellow);
+    }
+
+    .term-teal {
+      color: var(--terminal-teal);
+    }
+
+    .term-big {
+      font-size: 1.4em;
+      line-height: 80%;
+    }
+  }
+</style>

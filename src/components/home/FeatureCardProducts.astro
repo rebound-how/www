@@ -34,11 +34,6 @@ function returnSupportClass(p: ProductName): string {
   return isFeatured(p) ? "isFeatured" : "isNotFeatured";
 }
 function returnSupportSentence(): string {
-  // if (isFeatured(p)) {
-  //   return `Available in ${translateProductName(p)}`;
-  // } else {
-  //   return "";
-  // }
   const productsArr = products.map((p) => translateProductName(p));
   const productsStr = productsArr.join(", ");
   const index = productsStr.indexOf(", ");
