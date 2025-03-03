@@ -1,0 +1,105 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<div class="getStarted">
+  <Icon name="feather/chevron-right" />
+  <code>curl https://rebound.how/install/full.sh | sh</code>
+  <div class="getStarted__button">
+    <button role="button" id="install-button" title="Copy to clipboard">
+      <Icon name="feather/copy" />
+      <span class="screen-reader-text">Copy to clipboard</span>
+    </button>
+    <p id="install-message">Copied!</p>
+  </div>
+</div>
+
+<script is:inline>
+  const btn = document.getElementById("install-button");
+  const msg = document.getElementById("install-message");
+  btn.addEventListener("click", () =>
+    writeClipboardText("curl https://rebound.how/install/full.sh | sh"),
+  );
+
+  async function writeClipboardText(text) {
+    try {
+      await navigator.clipboard.writeText(text);
+      msg.classList.add("visible");
+      setTimeout(() => {
+        msg.classList.remove("visible");
+      }, 2000);
+    } catch (error) {
+      console.error(error.message);
+    }
+  }
+</script>
+
+<style lang="scss">
+  .getStarted {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem;
+
+    background-color: var(--grey-200);
+    border-radius: var(--border-radius-m);
+
+    code {
+      margin-right: 1.2rem;
+      max-width: calc(100vw - 12rem);
+      overflow: auto;
+      white-space: nowrap;
+    }
+
+    &__button {
+      position: relative;
+
+      display: grid;
+      place-content: center;
+      padding: 0.3rem;
+
+      button {
+        display: grid;
+        place-content: center;
+
+        background-color: transparent;
+        border: none;
+
+        color: var(--text-color);
+
+        transition: all 0.3s ease-in-out;
+
+        &:hover {
+          cursor: pointer;
+
+          color: var(--text-color-bright);
+
+          transform: scale(1.2);
+        }
+      }
+
+      p {
+        position: absolute;
+        top: 100%;
+        left: 50%;
+
+        padding: 0.3rem 0.6rem;
+
+        background-color: var(--grey-800);
+        border-radius: var(--border-radius-s);
+        box-shadow: var(--box-shadow-diffuse);
+        opacity: 0;
+
+        color: white;
+        font-size: 1.4rem;
+
+        pointer-events: none;
+        transform: translateX(-50%);
+        transition: opacity 0.3s ease-in-out;
+
+        &.visible {
+          opacity: 1;
+        }
+      }
+    }
+  }
+</style>
