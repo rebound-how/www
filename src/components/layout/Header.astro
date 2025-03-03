@@ -1,28 +1,42 @@
 ---
 import Rebound from "@/components/Rebound.astro";
+import GitHub from "@/components/GitHub.astro";
 ---
 
-<header>
+<header class="header">
   <div class="container">
-    <div class="logo">
+    <div class="header__logo">
       <a href="/">
         <Rebound />
       </a>
     </div>
+    <nav class="header__menu">
+      <GitHub />
+    </nav>
   </div>
 </header>
 
 <style lang="scss">
-  header {
+  .header {
     padding-top: var(--space-small);
     padding-bottom: var(--space-small);
 
-    .logo {
+    .container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: var(--space-medium);
+    }
+
+    &__logo {
       a {
         &:hover {
           text-decoration: none;
         }
       }
+    }
+
+    &__menu {
     }
   }
 </style>

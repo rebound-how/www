@@ -1,0 +1,98 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<a
+  href="https://github.com/rebound-how/"
+  class="githubLink"
+  title="Visit repo on Github"
+>
+  <span class="gitHubLink__label js-label">GitHub</span>
+  <span class="githubLink__stars js-stars">
+    <Icon name="feather/star" />
+    <span></span>
+    <span class="screen-reader-text">stars</span></span
+  >
+  <Icon name="feather/github" />
+</a>
+
+<script>
+  function formatNumber(n: number): string {
+    return new Intl.NumberFormat("en-GB", {
+      notation: "compact",
+      compactDisplay: "short",
+    }).format(n);
+  }
+
+  async function getStars() {
+    // GitHub API: https://developer.github.com/v3/repos/#get
+    try {
+      let res = await fetch("https://api.github.com/repos/rebound-how/www");
+      if (!res.ok) {
+        throw new Error(res.statusText);
+      } else {
+        let json = await res.json();
+
+        // prune the data to return only what we want
+        return {
+          stargazers: json.stargazers_count,
+        };
+      }
+    } catch (e) {
+      console.error("Couldn't fetch Github stars...");
+    }
+  }
+
+  const stars = await getStars();
+  const wrapper = document.querySelector(".js-stars");
+  if (stars) {
+    const span = wrapper?.querySelector("span");
+    const label = document.querySelector(".js-label");
+    if (span && label && stars.stargazers > 0) {
+      (span as HTMLElement).innerHTML = formatNumber(stars.stargazers);
+      (wrapper as HTMLElement).style.display = "flex";
+      label.remove();
+    }
+  } else {
+    wrapper?.remove();
+  }
+</script>
+
+<style lang="scss">
+  .githubLink {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.2rem;
+    gap: 0.6rem;
+
+    background-color: var(--grey-800);
+    border-radius: 1.8rem;
+    box-shadow: var(--box-shadow-diffuse);
+
+    color: var(--grey-100);
+
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      box-shadow: var(--box-shadow-sharp);
+
+      text-decoration: none;
+    }
+
+    &:active {
+      box-shadow: none;
+
+      transform: translateY(0.1rem);
+    }
+
+    &__stars {
+      display: none;
+      align-items: center;
+      gap: 0.2rem;
+    }
+
+    > :last-child {
+      margin-left: var(--space-small);
+    }
+  }
+</style>
