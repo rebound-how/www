@@ -1,3 +1,7 @@
+---
+import GetStarted from "@/components/GetStarted.astro";
+---
+
 <section class="homeHero">
   <div class="container">
     <h1 class="text-center">
@@ -8,11 +12,13 @@
       a reliability automation platform, so people can rely on you being there
       when they need.
     </p>
-    <p class="text-center">
+    <div class="homeHero__start">
       <a href="https://github.com/rebound-how/" class="button button--primary"
-        >Get started</a
+        >Read the docs</a
       >
-    </p>
+      <span>or</span>
+      <GetStarted />
+    </div>
   </div>
 </section>
 
@@ -31,6 +37,19 @@
 
       color: var(--text-color-dim);
       font-size: 2.4rem;
+    }
+
+    &__start {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-small);
+      margin-top: var(--space-medium);
+
+      @media (width > 50rem) {
+        flex-direction: row;
+      }
     }
   }
 </style>
