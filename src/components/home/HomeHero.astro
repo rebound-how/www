@@ -5,7 +5,8 @@ import GetStarted from "@/components/GetStarted.astro";
 <section class="homeHero">
   <div class="container">
     <h1 class="text-center">
-      The open source toolbox <br /> for resilient operations
+      The open source toolbox <br /> for <span class="accident">resilient</span>
+      operations
     </h1>
     <p class="text-center">
       Rebound is a set of tools, ranging from a network injection fault proxy to
@@ -30,6 +31,19 @@ import GetStarted from "@/components/GetStarted.astro";
 
     h1 {
       font-weight: 700;
+
+      .accident {
+        display: inline-block;
+
+        animation: 1s bounce-down forwards 1s;
+        transform-origin: 0% 100%;
+      }
+
+      &:hover {
+        .accident {
+          animation: 0.3s bounce-up forwards;
+        }
+      }
     }
 
     p {
@@ -50,6 +64,58 @@ import GetStarted from "@/components/GetStarted.astro";
       @media (width > 50rem) {
         flex-direction: row;
       }
+    }
+  }
+
+  @keyframes bounce-down {
+    0% {
+      transform: rotate(0);
+    }
+
+    20% {
+      transform: rotate(3deg);
+    }
+
+    30% {
+      transform: rotate(1.5deg);
+    }
+
+    40% {
+      transform: rotate(3deg);
+    }
+
+    50% {
+      transform: rotate(2.2deg);
+    }
+
+    60% {
+      transform: rotate(3deg);
+    }
+
+    70% {
+      transform: rotate(2.5deg);
+    }
+
+    80% {
+      transform: rotate(3deg);
+    }
+
+    90% {
+      transform: rotate(2.8deg);
+    }
+
+    100% {
+      transform: rotate(3deg);
+    }
+  }
+
+  @keyframes bounce-up {
+    0% {
+      transform: rotate(3deg);
+    }
+
+    100% {
+      transform: rotate(0);
     }
   }
 </style>
