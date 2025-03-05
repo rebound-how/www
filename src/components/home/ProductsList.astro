@@ -1,7 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import Terminal from "@/components/Terminal.astro";
+
+import ReliablyScreenshot from "@/assets/reliably-screenshot.png";
 
 const lueurTerminal = `$ lueur scenario run --scenario scenario.yaml
 
@@ -18,6 +21,27 @@ Tests run: <span class="term-teal">7</span>, Tests failed: <span class="term-red
 Total time: 2.4s
 
 Report saved as <span class="term-yellow">report.json</span>`;
+
+const chaostoolkitTerminal = `$ chaos run policy.json
+<span class="term-green">[2025-03-04 15:23:27 INFO]</span> Validating the experiment's syntax
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Experiment looks valid
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Running experiment: Loss of pod capacity does not impact latency
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Steady-state strategy: after-method-only
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Rollbacks strategy: default 
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Playing your experiment's method now...
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Action: Run 5qps to home page for 60s [in background]
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Action: Delete application pod
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Action: Let it self-heal
+<span class="term-green">[2025-03-04 15:23:28 INFO]</span> Pausing activity for 45s or until the execution is resumed
+<span class="term-green">[2025-03-04 15:24:13 INFO]</span> Resuming execution...
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> Steady state hypothesis: Steady-State Hypothesis
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> Probe: Capacity is back to normal
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> Probe: Latency was not impacted
+<span class="term-red">[2025-03-04 15:24:28 CRITICAL]</span> Steady state probe 'Latency was not impacted' is not in the given tolerance
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> Let's rollback...
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> No declared rollbacks, let's move on.
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> Experiment ended with status: deviated
+<span class="term-green">[2025-03-04 15:24:28 INFO]</span> The steady-state has deviated, a weakness may have been discovered`;
 ---
 
 <section class="homeProducts homeSection">
@@ -108,7 +132,9 @@ Report saved as <span class="term-yellow">report.json</span>`;
               </p>
             </li>
           </ul>
-          <div class="productMedia"></div>
+          <div class="productMedia">
+            <Terminal content={chaostoolkitTerminal} />
+          </div>
         </div>
         <div class="product__link">
           <a href="https://chaostoolkit.org/" class="button button--primary"
@@ -153,7 +179,12 @@ Report saved as <span class="term-yellow">report.json</span>`;
               </p>
             </li>
           </ul>
-          <div class="productMedia"></div>
+          <div class="productMedia">
+            <Image
+              src={ReliablyScreenshot}
+              alt="A screenshot from the Reliably application. It shows an expriment with a summary of the last execution results and a breakdown of the different actions the experiment is made of."
+            />
+          </div>
         </div>
         <div class="product__link">
           <a
@@ -277,6 +308,12 @@ Report saved as <span class="term-yellow">report.json</span>`;
             min-width: 0;
 
             background-color: blue;
+
+            img {
+              display: block;
+              height: auto;
+              width: 100%;
+            }
           }
         }
 
