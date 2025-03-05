@@ -152,7 +152,7 @@ const chaostoolkitTerminal = `$ chaos run policy.json
           </h3>
           <p>Orchestrate Your Resilience Strategy</p>
         </header>
-        <div class="product__content">
+        <div class="product__content product__content--reliably">
           <ul class="productInfo list-reset">
             <li class="productInfo__item">
               <Icon name="feather/crosshair" />
@@ -307,7 +307,12 @@ const chaostoolkitTerminal = `$ chaos run policy.json
             height: 100%;
             min-width: 0;
 
-            background-color: blue;
+            background-color: var(--grey-100);
+
+            &:has(img) {
+              display: grid;
+              place-content: center;
+            }
 
             img {
               display: block;
@@ -327,6 +332,10 @@ const chaostoolkitTerminal = `$ chaos run policy.json
       @media (width > 40rem) {
         .product__content {
           grid-template-columns: 1fr 1fr;
+        }
+
+        .product__content--reliably {
+          grid-template-columns: 1fr;
         }
 
         .productWrapper:nth-child(2n) {
