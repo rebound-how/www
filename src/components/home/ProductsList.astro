@@ -1,7 +1,10 @@
 ---
+import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 
 import Terminal from "@/components/Terminal.astro";
+
+import ReliablyScreenshot from "@/assets/reliably-screenshot.png";
 
 const lueurTerminal = `$ lueur scenario run --scenario scenario.yaml
 
@@ -153,7 +156,12 @@ Report saved as <span class="term-yellow">report.json</span>`;
               </p>
             </li>
           </ul>
-          <div class="productMedia"></div>
+          <div class="productMedia">
+            <Image
+              src={ReliablyScreenshot}
+              alt="A screenshot from the Reliably application. It shows an expriment with a summary of the last execution results and a breakdown of the different actions the experiment is made of."
+            />
+          </div>
         </div>
         <div class="product__link">
           <a
@@ -277,6 +285,12 @@ Report saved as <span class="term-yellow">report.json</span>`;
             min-width: 0;
 
             background-color: blue;
+
+            img {
+              display: block;
+              height: auto;
+              width: 100%;
+            }
           }
         }
 
