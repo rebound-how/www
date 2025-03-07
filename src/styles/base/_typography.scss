@@ -87,15 +87,15 @@ strong {
 }
 
 a {
-  color: var(--orange);
+  color: var(--link-color);
   text-decoration: none;
 
   &:visited {
-    color: var(--purple);
+    color: var(--link-color);
   }
 
   &:hover {
-    color: var(--orange-bright);
+    color: var(--link-color);
     text-decoration: underline;
   }
 }

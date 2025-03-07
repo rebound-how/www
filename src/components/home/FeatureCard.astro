@@ -27,14 +27,6 @@ const { feature } = Astro.props;
 
 <style lang="scss">
   .featureCard {
-    // --background-gradient-start: #371030;
-    // --background-gradient-start: var(--grey-200);
-    // --background-gradient-stop: #290622;
-    // --background-gradient-stop: var(--grey-200);
-    // --border-color: white;
-
-    --icon-color: var(--green-400);
-
     position: relative;
 
     height: 100%;
@@ -51,14 +43,6 @@ const { feature } = Astro.props;
       align-items: center;
       justify-content: space-between;
       margin-bottom: var(--space-small);
-    }
-
-    &__icon {
-      svg {
-        color: var(--icon-color);
-        height: 3.6rem;
-        width: auto;
-      }
     }
 
     &__title {
