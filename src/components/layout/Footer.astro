@@ -9,7 +9,11 @@ import Rebound from "@/components/Rebound.astro";
         <Rebound color="white" size="3.2rem" ; />
       </a>
     </div>
-    <div class="footer__links">
+    <div class="footerLinks">
+      <a href="/support/">Support</a>
+      <a href="/support/#contact">Contact</a>
+    </div>
+    <div class="footerLinks footerLinks--secondary">
       <a href="/legal">Legal notice</a>
     </div>
   </div>
@@ -36,15 +40,21 @@ import Rebound from "@/components/Rebound.astro";
       }
     }
 
-    &__links {
+    .footerLinks {
       display: flex;
       justify-content: center;
       gap: var(--space-small);
       margin-top: var(--space-large);
 
       a {
-        color: var(--grey-500);
+        color: var(--grey-200);
         font-size: 1.6rem;
+      }
+
+      &--secondary {
+        a {
+          color: var(--grey-500);
+        }
       }
     }
   }
