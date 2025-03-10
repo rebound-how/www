@@ -11,6 +11,8 @@ import GitHub from "@/components/GitHub.astro";
       </a>
     </div>
     <nav class="header__menu">
+      <a href="/support/">Support</a>
+      <a href="/support/#contact">Contact</a>
       <GitHub />
     </nav>
   </div>
@@ -37,6 +39,13 @@ import GitHub from "@/components/GitHub.astro";
     }
 
     &__menu {
+      display: flex;
+      align-items: center;
+      gap: var(--space-small);
+
+      a:not([class]) {
+        color: var(--text-color);
+      }
     }
   }
 </style>
