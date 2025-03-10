@@ -5,10 +5,12 @@
   --display-font: "Lexend Variable", sans-serif;
   --base-font-size: 1.6rem;
 
+  --accent-color: var(--orange);
+
   --text-color: var(--grey-700);
   --text-color-bright: var(--grey-800);
   --text-color-dim: var(--grey-500);
-  --link-color: var(--orange);
+  --link-color: var(--accent-color);
   --button-color: var(--grey-900);
   --background-color: var(--grey-100);
 

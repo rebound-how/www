@@ -1,6 +1,8 @@
 ---
 import Rebound from "@/components/Rebound.astro";
 import GitHub from "@/components/GitHub.astro";
+
+const pathname = new URL(Astro.request.url).pathname;
 ---
 
 <header class="header">
@@ -11,7 +13,12 @@ import GitHub from "@/components/GitHub.astro";
       </a>
     </div>
     <nav class="header__menu">
-      <a href="/support/">Support</a>
+      <a
+        href="/support/"
+        aria-current={pathname === "/support/" ? "page" : false}
+      >
+        Support
+      </a>
       <a href="/support/#contact">Contact</a>
       <GitHub />
     </nav>
@@ -49,7 +56,44 @@ import GitHub from "@/components/GitHub.astro";
       gap: var(--space-small);
 
       a:not([class]) {
+        position: relative;
+
+        padding: 0.3rem 0.8rem 0.6rem;
+
+        border-radius: var(--border-radius-s);
+
         color: var(--text-color);
+
+        &::after {
+          content: "";
+
+          position: absolute;
+          top: calc(100% - 0.4rem);
+          left: 0.8rem;
+
+          display: block;
+          height: 0.4rem;
+          width: calc(100% - 1.6rem);
+
+          border-radius: 0.2rem;
+          background-color: transparent;
+
+          transition: background-color 0.3s ease-in-out;
+        }
+
+        &:hover {
+          text-decoration: none;
+
+          &::after {
+            background-color: var(--grey-500);
+          }
+        }
+
+        &[aria-current="page"] {
+          &::after {
+            background-color: var(--accent-color);
+          }
+        }
       }
     }
   }
