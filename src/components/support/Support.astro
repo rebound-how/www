@@ -1,0 +1,116 @@
+---
+import { Icon } from "astro-icon/components";
+---
+
+<article class="support">
+  <div class="container">
+    <div class="support__content">
+      <h1>Support</h1>
+      <section>
+        <h2>Open Source</h2>
+        <p>
+          If you want to contribute to the open source projects or raise issues,
+          please visit the GitHub repos for <a
+            href="https://github.com/chaostoolkit/chaostoolkit">Chaos Toolkit</a
+          >, <a href="https://github.com/rebound-how/">Lueur</a>, and <a
+            href="https://github.com/rebound-how/">Reliably</a
+          >.
+        </p>
+        <p>
+          If you want to support and fund the development of the open source
+          Rebound suite, please visit <a
+            href="https://opencollective.com/rebound">our OpenCollective page</a
+          >.
+        </p>
+      </section>
+      <section>
+        <h2>Entreprise Support</h2>
+        <p>
+          I (Sylvain, the creator and lead maintainer of Chaos Toolkit and
+          Rebound) provide paid enterprise support for companies and
+          organizations seeking:
+        </p>
+        <ul>
+          <li>Ad-hoc development</li>
+          <li>Installation support</li>
+          <li>Chaos engineering and system resilience consulting</li>
+        </ul>
+        <p>Contact me to discuss how I can help you, using the form below.</p>
+      </section>
+    </div>
+    <div class="support__illustration">
+      <Icon name="noun-abstract-3832335" />
+    </div>
+  </div>
+  <span class="support__scroll"
+    ><Icon name="feather/arrow-down" size="3.2rem" /></span
+  >
+</article>
+
+<style lang="scss">
+  .support {
+    position: relative;
+
+    min-height: calc(100vh - var(--headerHeight));
+    padding-top: var(--space-large);
+    padding-bottom: calc(2 * var(--space-large));
+
+    .container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-large);
+
+      @media (min-width: 60rem) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &__content {
+      section + section {
+        margin-top: var(--space-large);
+      }
+    }
+
+    &__illustration {
+      position: relative;
+
+      display: none;
+
+      color: var(--grey-200);
+
+      @media (min-width: 60rem) {
+        display: grid;
+        place-content: center;
+      }
+
+      svg {
+        position: absolute;
+        top: 50%;
+
+        display: block;
+        height: auto;
+        width: 100%;
+
+        transform: translateY(-30%);
+      }
+    }
+
+    &__scroll {
+      position: absolute;
+      bottom: var(--space-medium);
+      left: 50%;
+
+      display: grid;
+      place-content: center;
+      height: 4.8rem;
+      width: 4.8rem;
+
+      border-radius: 50%;
+      background-color: var(--grey-300);
+
+      color: var(--grey-100);
+
+      transform: translateX(-50%);
+    }
+  }
+</style>

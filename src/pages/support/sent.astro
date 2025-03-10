@@ -1,0 +1,28 @@
+---
+import Layout from "@/layouts/Layout.astro";
+---
+
+<Layout
+  title="Your message has been sent"
+  description="Get in touch to learn how we can help your organization use Rebound to build more resilient software."
+>
+  <main class="messageSent">
+    <h1>Your message has been sent!</h1>
+    <p>We will be in touch soon.</p>
+  </main>
+</Layout>
+
+<style lang="scss">
+  .messageSent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-small);
+    padding-top: var(--space-large);
+
+    p {
+      font-size: 2.4rem;
+    }
+  }
+</style>

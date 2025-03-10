@@ -14,6 +14,8 @@
 
   // Layout
   --max-width: 130rem;
+  --headerHeight: 13.6rem;
+  --footerHeight: 35.2rem;
 
   // Vertical Rythm
   --space-base: 1.6rem;
@@ -61,6 +63,10 @@
   --cc-pc-tab-border: var(--grey-400);
   --cc-pc-footer-button-bg: hsla(var(--pink-ink), 0.85);
   --cc-pc-footer-button-color: white;
+
+  @media (width > 30rem) {
+    --headerHeight: 6.8rem;
+  }
 
   @media (min-width: 60em) {
     --sectionPadding: calc(2 * var(--space-large));
