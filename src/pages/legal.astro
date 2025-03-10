@@ -25,6 +25,13 @@ import Layout from "@/layouts/Layout.astro";
               >sylvain.hellegouarch@gmail.com</a
             >
           </p>
+          <p class="legal__credit">
+            Illustration on Support page by Zky Icon from <a
+              href="https://thenounproject.com/browse/icons/term/abstract/"
+              target="_blank"
+              title="abstract Icons">Noun Project</a
+            > (CC BY 3.0)
+          </p>
         </div>
         <div>
           <p>
@@ -58,6 +65,11 @@ import Layout from "@/layouts/Layout.astro";
       @media (width > 50rem) {
         grid-template-columns: repeat(2, 1fr);
       }
+    }
+
+    &__credit {
+      margin-top: var(--space-large);
+      font-size: 0.8em;
     }
 
     &__contact {
