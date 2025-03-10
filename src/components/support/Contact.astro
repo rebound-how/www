@@ -1,1 +1,90 @@
-<section class="contact" id="contact">Contact</section>
+<article class="contact" id="contact">
+  <div class="container">
+    <h1>Contact</h1>
+    <div class="contact__grid">
+      <div class="contact__message">
+        <p>Let's get in touch!</p>
+        <p>
+          Contact me for <strong
+            >all enquiries regarding paid enterprise support</strong
+          > for the Rebound suite and consulting about chaos engineering and system
+          reliability.
+        </p>
+        <p>
+          <strong
+            >For open source questions and issues, please use the Github
+            repositories listed above.</strong
+          >
+        </p>
+      </div>
+      <div class="contact__form">
+        <form
+          class="form"
+          name="contact"
+          action="/support/sent/"
+          method="POST"
+          data-netlify="true"
+        >
+          <p class="inputWrapper">
+            <label for="name">
+              Your Name <span class="required">Required</span>
+            </label>
+            <input type="text" name="name" id="name" required />
+          </p>
+          <p class="inputWrapper">
+            <label for="email">
+              Your Email <span class="required">Required</span>
+            </label>
+            <input type="email" name="email" id="email" />
+          </p>
+          <p class="inputWrapper">
+            <label for="company">
+              Company Name <span class="required">Required</span>
+            </label>
+            <input type="text" name="company" id="company" />
+          </p>
+          <p class="inputWrapper">
+            <label for="message">
+              Message <span class="required">Required</span>
+            </label>
+            <textarea name="message" id="message" rows="5" required></textarea>
+          </p>
+          <p class="inputWrapper">
+            <button type="submit" class="button button--primary">Send</button>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</article>
+
+<style lang="scss">
+  .contact {
+    --footerHeight: 26.4rem;
+
+    padding-top: var(--space-large);
+    padding-bottom: var(--space-large);
+
+    background-color: white;
+
+    .container {
+      min-height: calc(100vh - var(--footerHeight));
+    }
+
+    &__grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-large);
+
+      @media (min-width: 60rem) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    &__message {
+      p {
+        max-width: 50rem;
+      }
+    }
+  }
+</style>

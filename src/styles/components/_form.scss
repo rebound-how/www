@@ -21,14 +21,17 @@
     > input,
     > textarea {
       display: block;
-      padding: 0.3rem 0.6rem;
+      padding: 0.8rem 1rem;
       width: 100%;
 
-      border: none;
+      border: 0.1rem solid var(--grey-300);
       border-radius: var(--border-radius-s);
+      background-color: var(--grey-100);
+
+      color: var(--text-color);
 
       &:focus-visible {
-        outline: 0.2rem solid var(--orange-dim);
+        outline: 0.2rem solid var(--orange);
         outline-offset: 0.2rem;
       }
     }
