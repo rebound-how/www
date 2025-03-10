@@ -1,4 +1,7 @@
 User-agent: *
+Disallow: /support/sent/
+
+User-agent: *
 Allow: /
 
 Sitemap: https://rebound.how/sitemap-index.xml
