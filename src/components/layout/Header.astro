@@ -25,9 +25,14 @@ import GitHub from "@/components/GitHub.astro";
 
     .container {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: space-between;
       gap: var(--space-medium);
+
+      @media (width > 30rem) {
+        flex-direction: row;
+      }
     }
 
     &__logo {
