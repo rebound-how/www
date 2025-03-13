@@ -1,0 +1,11 @@
+[data-show-when] {
+  display: none;
+}
+
+.has-highlight-support [data-show-when="has-highlight-support"] {
+  display: block;
+}
+
+.no-highlight-support [data-show-when="no-highlight-support"] {
+  display: block;
+}

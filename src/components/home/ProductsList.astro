@@ -122,8 +122,15 @@ const chaostoolkitTerm = `$ chaos run policy.json
               </p>
             </li>
           </ul>
-          <div class="productMedia" id="lueurTerm">
+          <div
+            class="productMedia"
+            id="lueurTerm"
+            data-show-when="has-highlight-support"
+          >
             <Terminal content={lueurTerm} />
+          </div>
+          <div class="productMedia" data-show-when="no-highlight-support">
+            <Terminal content={lueurTerminal} />
           </div>
         </div>
         <div class="product__link">
@@ -169,7 +176,14 @@ const chaostoolkitTerm = `$ chaos run policy.json
               </p>
             </li>
           </ul>
-          <div class="productMedia" id="chaostoolkitTerm">
+          <div
+            class="productMedia"
+            id="chaosToolkitTerm"
+            data-show-when="has-highlight-support"
+          >
+            <Terminal content={chaostoolkitTerm} />
+          </div>
+          <div class="productMedia" data-show-when="no-highlight-support">
             <Terminal content={chaostoolkitTerminal} />
           </div>
         </div>
@@ -409,11 +423,14 @@ const chaostoolkitTerm = `$ chaos run policy.json
 
 <script>
   document.addEventListener("DOMContentLoaded", function () {
-    console.log("YOLO");
+    if (CSS.highlights) {
+      document.body.classList.add("has-highlight-support");
+    } else {
+      document.body.classList.add("no-highlight-support");
+    }
     const lueurTerm = document.getElementById("lueurTerm");
     const lueur = lueurTerm?.querySelector("pre");
     const t = document.getElementById("test");
-    console.log(t);
     const ctkTerm = document.getElementById("chaostoolkitTerm");
     const ctk = ctkTerm?.querySelector("pre");
 
