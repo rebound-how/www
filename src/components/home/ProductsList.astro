@@ -430,18 +430,81 @@ const chaostoolkitTerm = `$ chaos run policy.json
     }
     const lueurTerm = document.getElementById("lueurTerm");
     const lueur = lueurTerm?.querySelector("pre");
-    const t = document.getElementById("test");
     const ctkTerm = document.getElementById("chaostoolkitTerm");
     const ctk = ctkTerm?.querySelector("pre");
 
     const d = new Highlight();
-    const d1 = new Range();
+    const g = new Highlight();
+    const r = new Highlight();
+    const t = new Highlight();
+    const y = new Highlight();
     if (lueur) {
-      d1.setStart(lueur.firstChild!, 1);
-      d1.setEnd(lueur.firstChild!, 10);
+      let d1 = new Range();
+      d1.setStart(lueur.firstChild!, 47);
+      d1.setEnd(lueur.firstChild!, 98);
       d.add(d1);
+      const d2 = new Range();
+      d2.setStart(lueur.firstChild!, 335);
+      d2.setEnd(lueur.firstChild!, 386);
+      d.add(d2);
+
+      const g1 = new Range();
+      g1.setStart(lueur.firstChild!, 100);
+      g1.setEnd(lueur.firstChild!, 101);
+      g.add(g1);
+      const g2 = new Range();
+      g2.setStart(lueur.firstChild!, 156);
+      g2.setEnd(lueur.firstChild!, 159);
+      g.add(g2);
+      const g3 = new Range();
+      g3.setStart(lueur.firstChild!, 161);
+      g3.setEnd(lueur.firstChild!, 162);
+      g.add(g3);
+      const g4 = new Range();
+      g4.setStart(lueur.firstChild!, 227);
+      g4.setEnd(lueur.firstChild!, 228);
+      g.add(g4);
+      const g5 = new Range();
+      g5.setStart(lueur.firstChild!, 229);
+      g5.setEnd(lueur.firstChild!, 230);
+      g.add(g5);
+      const g6 = new Range();
+      g6.setStart(lueur.firstChild!, 274);
+      g6.setEnd(lueur.firstChild!, 275);
+      g.add(g6);
+      const g7 = new Range();
+      g7.setStart(lueur.firstChild!, 332);
+      g7.setEnd(lueur.firstChild!, 333);
+      g.add(g7);
+
+      const r1 = new Range();
+      r1.setStart(lueur.firstChild!, 159);
+      r1.setEnd(lueur.firstChild!, 160);
+      r.add(r1);
+      const r2 = new Range();
+      r2.setStart(lueur.firstChild!, 272);
+      r2.setEnd(lueur.firstChild!, 273);
+      r.add(r2);
+      const r3 = new Range();
+      r3.setStart(lueur.firstChild!, 416);
+      r3.setEnd(lueur.firstChild!, 417);
+      r.add(r3);
+
+      const t1 = new Range();
+      t1.setStart(lueur.firstChild!, 399);
+      t1.setEnd(lueur.firstChild!, 400);
+      t.add(t1);
+
+      const y1 = new Range();
+      y1.setStart(lueur.firstChild!, 452);
+      y1.setEnd(lueur.firstChild!, 463);
+      y.add(y1);
     }
 
     CSS.highlights.set("dim", d);
+    CSS.highlights.set("green", g);
+    CSS.highlights.set("red", r);
+    CSS.highlights.set("teal", t);
+    CSS.highlights.set("yellow", y);
   });
 </script>
