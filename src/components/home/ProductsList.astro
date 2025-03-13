@@ -22,6 +22,22 @@ Total time: 2.4s
 
 Report saved as <span class="term-yellow">report.json</span>`;
 
+const lueurTerm = `$ lueur scenario run --scenario scenario.yaml
+
+================ Running Scenarios ================
+
+⡏  4/4  Latency Increase By 30ms Steps From Downstream  &#9646;&#9646;&#9646;&#9646;
+⡏  1/1  Within Allowed Latency While Bandwidth At 5 bytes/second  &#9646;
+⡏  1/1  Circuit Breaker Takes Care of 404  &#9646;
+⡏  1/1  Packet loss has no impact on service performance  &#9646;
+
+===================== Summary =====================
+
+Tests run: 7, Tests failed: 2
+Total time: 2.4s
+
+Report saved as report.json`;
+
 const chaostoolkitTerminal = `$ chaos run policy.json
 <span class="term-green">[2025-03-04 15:23:27 INFO]</span> Validating the experiment's syntax
 <span class="term-green">[2025-03-04 15:23:28 INFO]</span> Experiment looks valid
@@ -42,6 +58,27 @@ const chaostoolkitTerminal = `$ chaos run policy.json
 <span class="term-green">[2025-03-04 15:24:28 INFO]</span> No declared rollbacks, let's move on.
 <span class="term-green">[2025-03-04 15:24:28 INFO]</span> Experiment ended with status: deviated
 <span class="term-green">[2025-03-04 15:24:28 INFO]</span> The steady-state has deviated, a weakness may have been discovered`;
+
+const chaostoolkitTerm = `$ chaos run policy.json
+[2025-03-04 15:23:27 INFO] Validating the experiment's syntax
+[2025-03-04 15:23:28 INFO] Experiment looks valid
+[2025-03-04 15:23:28 INFO] Running experiment: Loss of pod capacity does not impact latency
+[2025-03-04 15:23:28 INFO] Steady-state strategy: after-method-only
+[2025-03-04 15:23:28 INFO] Rollbacks strategy: default 
+[2025-03-04 15:23:28 INFO] Playing your experiment's method now...
+[2025-03-04 15:23:28 INFO] Action: Run 5qps to home page for 60s [in background]
+[2025-03-04 15:23:28 INFO] Action: Delete application pod
+[2025-03-04 15:23:28 INFO] Action: Let it self-heal
+[2025-03-04 15:23:28 INFO] Pausing activity for 45s or until the execution is resumed
+[2025-03-04 15:24:13 INFO] Resuming execution...
+[2025-03-04 15:24:28 INFO] Steady state hypothesis: Steady-State Hypothesis
+[2025-03-04 15:24:28 INFO] Probe: Capacity is back to normal
+[2025-03-04 15:24:28 INFO] Probe: Latency was not impacted
+[2025-03-04 15:24:28 CRITICAL] Steady state probe 'Latency was not impacted' is not in the given tolerance
+[2025-03-04 15:24:28 INFO] Let's rollback...
+[2025-03-04 15:24:28 INFO] No declared rollbacks, let's move on.
+[2025-03-04 15:24:28 INFO] Experiment ended with status: deviated
+[2025-03-04 15:24:28 INFO] The steady-state has deviated, a weakness may have been discovered`;
 ---
 
 <section class="homeProducts homeSection">
@@ -85,8 +122,8 @@ const chaostoolkitTerminal = `$ chaos run policy.json
               </p>
             </li>
           </ul>
-          <div class="productMedia">
-            <Terminal content={lueurTerminal} />
+          <div class="productMedia" id="lueurTerm">
+            <Terminal content={lueurTerm} />
           </div>
         </div>
         <div class="product__link">
@@ -132,7 +169,7 @@ const chaostoolkitTerminal = `$ chaos run policy.json
               </p>
             </li>
           </ul>
-          <div class="productMedia">
+          <div class="productMedia" id="chaostoolkitTerm">
             <Terminal content={chaostoolkitTerminal} />
           </div>
         </div>
@@ -369,3 +406,25 @@ const chaostoolkitTerminal = `$ chaos run policy.json
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    console.log("YOLO");
+    const lueurTerm = document.getElementById("lueurTerm");
+    const lueur = lueurTerm?.querySelector("pre");
+    const t = document.getElementById("test");
+    console.log(t);
+    const ctkTerm = document.getElementById("chaostoolkitTerm");
+    const ctk = ctkTerm?.querySelector("pre");
+
+    const d = new Highlight();
+    const d1 = new Range();
+    if (lueur) {
+      d1.setStart(lueur.firstChild!, 1);
+      d1.setEnd(lueur.firstChild!, 10);
+      d.add(d1);
+    }
+
+    CSS.highlights.set("dim", d);
+  });
+</script>

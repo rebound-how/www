@@ -87,23 +87,45 @@ const { content } = Astro.props;
       color: var(--terminal-text-dim);
     }
 
+    /* Using a single rule breaks styles in Firefox
+     * Tested in Firefox (Developer Edition) v136 */
+    ::highlight(dim) {
+      color: var(--terminal-text-dim);
+    }
+
     .term-green {
+      color: var(--terminal-green);
+    }
+    ::highlight(green) {
       color: var(--terminal-green);
     }
 
     .term-red {
       color: var(--terminal-red);
     }
+    ::highlight(red) {
+      color: var(--terminal-red);
+    }
 
     .term-yellow {
+      color: var(--terminal-yellow);
+    }
+    ::highlight(yellow) {
       color: var(--terminal-yellow);
     }
 
     .term-teal {
       color: var(--terminal-teal);
     }
+    ::highlight(teal) {
+      color: var(--terminal-teal);
+    }
 
     .term-big {
+      font-size: 1.4em;
+      line-height: 80%;
+    }
+    ::highlight(big) {
       font-size: 1.4em;
       line-height: 80%;
     }
