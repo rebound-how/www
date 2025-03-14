@@ -6,7 +6,7 @@ import Terminal from "@/components/Terminal.astro";
 
 import ReliablyScreenshot from "@/assets/reliably-screenshot.png";
 
-const lueurTerminal = `$ lueur scenario run --scenario scenario.yaml
+const lueurTerminal = `<span class="term-dim">$</span> lueur scenario run --scenario scenario.yaml
 
 <span class="term-dim">================ Running Scenarios ================</span>
 
@@ -38,7 +38,7 @@ Total time: 2.4s
 
 Report saved as report.json`;
 
-const chaostoolkitTerminal = `$ chaos run policy.json
+const chaostoolkitTerminal = `<span class="term-dim">$</span> chaos run policy.json
 <span class="term-green">[2025-03-04 15:23:27 INFO]</span> Validating the experiment's syntax
 <span class="term-green">[2025-03-04 15:23:28 INFO]</span> Experiment looks valid
 <span class="term-green">[2025-03-04 15:23:28 INFO]</span> Running experiment: Loss of pod capacity does not impact latency
@@ -439,6 +439,10 @@ const chaostoolkitTerm = `$ chaos run policy.json
     const t = new Highlight();
     const y = new Highlight();
     if (lueur) {
+      const d0 = new Range();
+      d0.setStart(lueur.firstChild!, 0);
+      d0.setEnd(lueur.firstChild!, 1);
+      d.add(d0);
       const d1 = new Range();
       d1.setStart(lueur.firstChild!, 47);
       d1.setEnd(lueur.firstChild!, 98);
@@ -502,6 +506,10 @@ const chaostoolkitTerm = `$ chaos run policy.json
     }
 
     if (ctk) {
+      const d0 = new Range();
+      d0.setStart(ctk.firstChild!, 0);
+      d0.setEnd(ctk.firstChild!, 1);
+      d.add(d0);
       const g1 = new Range();
       g1.setStart(ctk.firstChild!, 24);
       g1.setEnd(ctk.firstChild!, 50);
