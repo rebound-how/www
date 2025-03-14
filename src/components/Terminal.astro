@@ -125,9 +125,6 @@ const { content } = Astro.props;
       font-size: 1.4em;
       line-height: 80%;
     }
-    ::highlight(big) {
-      font-size: 1.4em;
-      line-height: 80%;
-    }
+    /* Styling font-size and line-height is not supported in ::highlight */
   }
 </style>

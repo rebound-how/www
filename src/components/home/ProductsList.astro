@@ -178,7 +178,7 @@ const chaostoolkitTerm = `$ chaos run policy.json
           </ul>
           <div
             class="productMedia"
-            id="chaosToolkitTerm"
+            id="chaostoolkitTerm"
             data-show-when="has-highlight-support"
           >
             <Terminal content={chaostoolkitTerm} />
@@ -439,7 +439,7 @@ const chaostoolkitTerm = `$ chaos run policy.json
     const t = new Highlight();
     const y = new Highlight();
     if (lueur) {
-      let d1 = new Range();
+      const d1 = new Range();
       d1.setStart(lueur.firstChild!, 47);
       d1.setEnd(lueur.firstChild!, 98);
       d.add(d1);
@@ -499,6 +499,85 @@ const chaostoolkitTerm = `$ chaos run policy.json
       y1.setStart(lueur.firstChild!, 452);
       y1.setEnd(lueur.firstChild!, 463);
       y.add(y1);
+    }
+
+    if (ctk) {
+      const g1 = new Range();
+      g1.setStart(ctk.firstChild!, 24);
+      g1.setEnd(ctk.firstChild!, 50);
+      g.add(g1);
+      const g2 = new Range();
+      g2.setStart(ctk.firstChild!, 86);
+      g2.setEnd(ctk.firstChild!, 112);
+      g.add(g2);
+      const g3 = new Range();
+      g3.setStart(ctk.firstChild!, 136);
+      g3.setEnd(ctk.firstChild!, 162);
+      g.add(g3);
+      const g4 = new Range();
+      g4.setStart(ctk.firstChild!, 228);
+      g4.setEnd(ctk.firstChild!, 254);
+      g.add(g4);
+      const g5 = new Range();
+      g5.setStart(ctk.firstChild!, 296);
+      g5.setEnd(ctk.firstChild!, 322);
+      g.add(g5);
+      const g6 = new Range();
+      g6.setStart(ctk.firstChild!, 352);
+      g6.setEnd(ctk.firstChild!, 378);
+      g.add(g6);
+      const g7 = new Range();
+      g7.setStart(ctk.firstChild!, 419);
+      g7.setEnd(ctk.firstChild!, 445);
+      g.add(g7);
+      const g8 = new Range();
+      g8.setStart(ctk.firstChild!, 500);
+      g8.setEnd(ctk.firstChild!, 526);
+      g.add(g8);
+      const g9 = new Range();
+      g9.setStart(ctk.firstChild!, 558);
+      g9.setEnd(ctk.firstChild!, 584);
+      g.add(g9);
+      const g10 = new Range();
+      g10.setStart(ctk.firstChild!, 610);
+      g10.setEnd(ctk.firstChild!, 636);
+      g.add(g10);
+      const g11 = new Range();
+      g11.setStart(ctk.firstChild!, 696);
+      g11.setEnd(ctk.firstChild!, 722);
+      g.add(g11);
+      const g12 = new Range();
+      g12.setStart(ctk.firstChild!, 745);
+      g12.setEnd(ctk.firstChild!, 771);
+      g.add(g12);
+      const g13 = new Range();
+      g13.setStart(ctk.firstChild!, 821);
+      g13.setEnd(ctk.firstChild!, 847);
+      g.add(g13);
+      const g14 = new Range();
+      g14.setStart(ctk.firstChild!, 882);
+      g14.setEnd(ctk.firstChild!, 908);
+      g.add(g14);
+      const r15 = new Range();
+      r15.setStart(ctk.firstChild!, 941);
+      r15.setEnd(ctk.firstChild!, 971);
+      r.add(r15);
+      const g16 = new Range();
+      g16.setStart(ctk.firstChild!, 1048);
+      g16.setEnd(ctk.firstChild!, 1074);
+      g.add(g16);
+      const g17 = new Range();
+      g17.setStart(ctk.firstChild!, 1093);
+      g17.setEnd(ctk.firstChild!, 1119);
+      g.add(g17);
+      const g18 = new Range();
+      g18.setStart(ctk.firstChild!, 1158);
+      g18.setEnd(ctk.firstChild!, 1184);
+      g.add(g18);
+      const g19 = new Range();
+      g19.setStart(ctk.firstChild!, 1224);
+      g19.setEnd(ctk.firstChild!, 1250);
+      g.add(g19);
     }
 
     CSS.highlights.set("dim", d);
