@@ -6,7 +6,7 @@ import Terminal from "@/components/Terminal.astro";
 
 import ReliablyScreenshot from "@/assets/reliably-screenshot.png";
 
-const lueurTerminal = `$ lueur scenario run --scenario scenario.yaml
+const lueurTerminal = `<span class="term-dim">$</span> lueur scenario run --scenario scenario.yaml
 
 <span class="term-dim">================ Running Scenarios ================</span>
 
@@ -22,7 +22,23 @@ Total time: 2.4s
 
 Report saved as <span class="term-yellow">report.json</span>`;
 
-const chaostoolkitTerminal = `$ chaos run policy.json
+const lueurTerm = `$ lueur scenario run --scenario scenario.yaml
+
+================ Running Scenarios ================
+
+⡏  4/4  Latency Increase By 30ms Steps From Downstream  &#9646;&#9646;&#9646;&#9646;
+⡏  1/1  Within Allowed Latency While Bandwidth At 5 bytes/second  &#9646;
+⡏  1/1  Circuit Breaker Takes Care of 404  &#9646;
+⡏  1/1  Packet loss has no impact on service performance  &#9646;
+
+===================== Summary =====================
+
+Tests run: 7, Tests failed: 2
+Total time: 2.4s
+
+Report saved as report.json`;
+
+const chaostoolkitTerminal = `<span class="term-dim">$</span> chaos run policy.json
 <span class="term-green">[2025-03-04 15:23:27 INFO]</span> Validating the experiment's syntax
 <span class="term-green">[2025-03-04 15:23:28 INFO]</span> Experiment looks valid
 <span class="term-green">[2025-03-04 15:23:28 INFO]</span> Running experiment: Loss of pod capacity does not impact latency
@@ -42,6 +58,27 @@ const chaostoolkitTerminal = `$ chaos run policy.json
 <span class="term-green">[2025-03-04 15:24:28 INFO]</span> No declared rollbacks, let's move on.
 <span class="term-green">[2025-03-04 15:24:28 INFO]</span> Experiment ended with status: deviated
 <span class="term-green">[2025-03-04 15:24:28 INFO]</span> The steady-state has deviated, a weakness may have been discovered`;
+
+const chaostoolkitTerm = `$ chaos run policy.json
+[2025-03-04 15:23:27 INFO] Validating the experiment's syntax
+[2025-03-04 15:23:28 INFO] Experiment looks valid
+[2025-03-04 15:23:28 INFO] Running experiment: Loss of pod capacity does not impact latency
+[2025-03-04 15:23:28 INFO] Steady-state strategy: after-method-only
+[2025-03-04 15:23:28 INFO] Rollbacks strategy: default 
+[2025-03-04 15:23:28 INFO] Playing your experiment's method now...
+[2025-03-04 15:23:28 INFO] Action: Run 5qps to home page for 60s [in background]
+[2025-03-04 15:23:28 INFO] Action: Delete application pod
+[2025-03-04 15:23:28 INFO] Action: Let it self-heal
+[2025-03-04 15:23:28 INFO] Pausing activity for 45s or until the execution is resumed
+[2025-03-04 15:24:13 INFO] Resuming execution...
+[2025-03-04 15:24:28 INFO] Steady state hypothesis: Steady-State Hypothesis
+[2025-03-04 15:24:28 INFO] Probe: Capacity is back to normal
+[2025-03-04 15:24:28 INFO] Probe: Latency was not impacted
+[2025-03-04 15:24:28 CRITICAL] Steady state probe 'Latency was not impacted' is not in the given tolerance
+[2025-03-04 15:24:28 INFO] Let's rollback...
+[2025-03-04 15:24:28 INFO] No declared rollbacks, let's move on.
+[2025-03-04 15:24:28 INFO] Experiment ended with status: deviated
+[2025-03-04 15:24:28 INFO] The steady-state has deviated, a weakness may have been discovered`;
 ---
 
 <section class="homeProducts homeSection">
@@ -85,7 +122,14 @@ const chaostoolkitTerminal = `$ chaos run policy.json
               </p>
             </li>
           </ul>
-          <div class="productMedia">
+          <div
+            class="productMedia"
+            id="lueurTerm"
+            data-show-when="has-highlight-support"
+          >
+            <Terminal content={lueurTerm} />
+          </div>
+          <div class="productMedia" data-show-when="no-highlight-support">
             <Terminal content={lueurTerminal} />
           </div>
         </div>
@@ -132,7 +176,14 @@ const chaostoolkitTerminal = `$ chaos run policy.json
               </p>
             </li>
           </ul>
-          <div class="productMedia">
+          <div
+            class="productMedia"
+            id="chaostoolkitTerm"
+            data-show-when="has-highlight-support"
+          >
+            <Terminal content={chaostoolkitTerm} />
+          </div>
+          <div class="productMedia" data-show-when="no-highlight-support">
             <Terminal content={chaostoolkitTerminal} />
           </div>
         </div>
@@ -369,3 +420,178 @@ const chaostoolkitTerminal = `$ chaos run policy.json
     }
   }
 </style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    if (CSS.highlights) {
+      document.body.classList.add("has-highlight-support");
+    } else {
+      document.body.classList.add("no-highlight-support");
+    }
+    const lueurTerm = document.getElementById("lueurTerm");
+    const lueur = lueurTerm?.querySelector("pre");
+    const ctkTerm = document.getElementById("chaostoolkitTerm");
+    const ctk = ctkTerm?.querySelector("pre");
+
+    const d = new Highlight();
+    const g = new Highlight();
+    const r = new Highlight();
+    const t = new Highlight();
+    const y = new Highlight();
+    if (lueur) {
+      const d0 = new Range();
+      d0.setStart(lueur.firstChild!, 0);
+      d0.setEnd(lueur.firstChild!, 1);
+      d.add(d0);
+      const d1 = new Range();
+      d1.setStart(lueur.firstChild!, 47);
+      d1.setEnd(lueur.firstChild!, 98);
+      d.add(d1);
+      const d2 = new Range();
+      d2.setStart(lueur.firstChild!, 335);
+      d2.setEnd(lueur.firstChild!, 386);
+      d.add(d2);
+
+      const g1 = new Range();
+      g1.setStart(lueur.firstChild!, 100);
+      g1.setEnd(lueur.firstChild!, 101);
+      g.add(g1);
+      const g2 = new Range();
+      g2.setStart(lueur.firstChild!, 156);
+      g2.setEnd(lueur.firstChild!, 159);
+      g.add(g2);
+      const g3 = new Range();
+      g3.setStart(lueur.firstChild!, 161);
+      g3.setEnd(lueur.firstChild!, 162);
+      g.add(g3);
+      const g4 = new Range();
+      g4.setStart(lueur.firstChild!, 227);
+      g4.setEnd(lueur.firstChild!, 228);
+      g.add(g4);
+      const g5 = new Range();
+      g5.setStart(lueur.firstChild!, 229);
+      g5.setEnd(lueur.firstChild!, 230);
+      g.add(g5);
+      const g6 = new Range();
+      g6.setStart(lueur.firstChild!, 274);
+      g6.setEnd(lueur.firstChild!, 275);
+      g.add(g6);
+      const g7 = new Range();
+      g7.setStart(lueur.firstChild!, 332);
+      g7.setEnd(lueur.firstChild!, 333);
+      g.add(g7);
+
+      const r1 = new Range();
+      r1.setStart(lueur.firstChild!, 159);
+      r1.setEnd(lueur.firstChild!, 160);
+      r.add(r1);
+      const r2 = new Range();
+      r2.setStart(lueur.firstChild!, 272);
+      r2.setEnd(lueur.firstChild!, 273);
+      r.add(r2);
+      const r3 = new Range();
+      r3.setStart(lueur.firstChild!, 416);
+      r3.setEnd(lueur.firstChild!, 417);
+      r.add(r3);
+
+      const t1 = new Range();
+      t1.setStart(lueur.firstChild!, 399);
+      t1.setEnd(lueur.firstChild!, 400);
+      t.add(t1);
+
+      const y1 = new Range();
+      y1.setStart(lueur.firstChild!, 452);
+      y1.setEnd(lueur.firstChild!, 463);
+      y.add(y1);
+    }
+
+    if (ctk) {
+      const d0 = new Range();
+      d0.setStart(ctk.firstChild!, 0);
+      d0.setEnd(ctk.firstChild!, 1);
+      d.add(d0);
+      const g1 = new Range();
+      g1.setStart(ctk.firstChild!, 24);
+      g1.setEnd(ctk.firstChild!, 50);
+      g.add(g1);
+      const g2 = new Range();
+      g2.setStart(ctk.firstChild!, 86);
+      g2.setEnd(ctk.firstChild!, 112);
+      g.add(g2);
+      const g3 = new Range();
+      g3.setStart(ctk.firstChild!, 136);
+      g3.setEnd(ctk.firstChild!, 162);
+      g.add(g3);
+      const g4 = new Range();
+      g4.setStart(ctk.firstChild!, 228);
+      g4.setEnd(ctk.firstChild!, 254);
+      g.add(g4);
+      const g5 = new Range();
+      g5.setStart(ctk.firstChild!, 296);
+      g5.setEnd(ctk.firstChild!, 322);
+      g.add(g5);
+      const g6 = new Range();
+      g6.setStart(ctk.firstChild!, 352);
+      g6.setEnd(ctk.firstChild!, 378);
+      g.add(g6);
+      const g7 = new Range();
+      g7.setStart(ctk.firstChild!, 419);
+      g7.setEnd(ctk.firstChild!, 445);
+      g.add(g7);
+      const g8 = new Range();
+      g8.setStart(ctk.firstChild!, 500);
+      g8.setEnd(ctk.firstChild!, 526);
+      g.add(g8);
+      const g9 = new Range();
+      g9.setStart(ctk.firstChild!, 558);
+      g9.setEnd(ctk.firstChild!, 584);
+      g.add(g9);
+      const g10 = new Range();
+      g10.setStart(ctk.firstChild!, 610);
+      g10.setEnd(ctk.firstChild!, 636);
+      g.add(g10);
+      const g11 = new Range();
+      g11.setStart(ctk.firstChild!, 696);
+      g11.setEnd(ctk.firstChild!, 722);
+      g.add(g11);
+      const g12 = new Range();
+      g12.setStart(ctk.firstChild!, 745);
+      g12.setEnd(ctk.firstChild!, 771);
+      g.add(g12);
+      const g13 = new Range();
+      g13.setStart(ctk.firstChild!, 821);
+      g13.setEnd(ctk.firstChild!, 847);
+      g.add(g13);
+      const g14 = new Range();
+      g14.setStart(ctk.firstChild!, 882);
+      g14.setEnd(ctk.firstChild!, 908);
+      g.add(g14);
+      const r15 = new Range();
+      r15.setStart(ctk.firstChild!, 941);
+      r15.setEnd(ctk.firstChild!, 971);
+      r.add(r15);
+      const g16 = new Range();
+      g16.setStart(ctk.firstChild!, 1048);
+      g16.setEnd(ctk.firstChild!, 1074);
+      g.add(g16);
+      const g17 = new Range();
+      g17.setStart(ctk.firstChild!, 1093);
+      g17.setEnd(ctk.firstChild!, 1119);
+      g.add(g17);
+      const g18 = new Range();
+      g18.setStart(ctk.firstChild!, 1158);
+      g18.setEnd(ctk.firstChild!, 1184);
+      g.add(g18);
+      const g19 = new Range();
+      g19.setStart(ctk.firstChild!, 1224);
+      g19.setEnd(ctk.firstChild!, 1250);
+      g.add(g19);
+    }
+
+    CSS.highlights.set("dim", d);
+    CSS.highlights.set("green", g);
+    CSS.highlights.set("red", r);
+    CSS.highlights.set("teal", t);
+    CSS.highlights.set("yellow", y);
+  });
+</script>
