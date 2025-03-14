@@ -18,7 +18,7 @@ import { Icon } from "astro-icon/components";
   const btn = document.getElementById("install-button");
   const msg = document.getElementById("install-message");
   btn.addEventListener("click", () =>
-    writeClipboardText("curl https://rebound.how/install/full.sh | sh"),
+    writeClipboardText("curl -sSL https://rebound.how/install/full.sh | bash"),
   );
 
   async function writeClipboardText(text) {
