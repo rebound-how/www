@@ -1,4 +1,11 @@
-#!/usr/bin/env bash
+#!/bin/sh
+
+# Licensed under the Apache v2 license
+# <https://www.apache.org/licenses/LICENSE-2.0>, at your
+# option. This file may not be copied, modified, or distributed
+# except according to those terms.
+
+
 #==============================================================================
 # Rebound installer
 #
@@ -32,7 +39,7 @@ YELLOW="\033[33m"
 RED="\033[31m"
 BOLD="\033[1m"
 NC="\033[0m"  # No Color
-REB=$(echo -e "\033[38;2;239;223;11mR\033[38;2;241;191;33me\033[38;2;243;159;55mb\033[38;2;245;127;77mo\033[38;2;247;95;99mu\033[38;2;249;63;121mn\033[38;2;252;29;144md\033[0m")
+REB=$(echo -e "REBOUND")
 
 #---------------------------------------------------------------------
 # Helper functions for printing status messages with emojis
@@ -133,20 +140,13 @@ install_tools() {
 #---------------------------------------------------------------------
 # Install the lueur binary if present.
 #---------------------------------------------------------------------
-LUEUR_INSTALLED=0
+LUEUR_INSTALLED=1
 install_lueur() {
-    if [[ -f "./lueur" ]]; then
-        if [[ $EUID -eq 0 ]]; then
-            run_step cp "./lueur" /usr/local/bin/lueur
-            run_step chmod +x /usr/local/bin/lueur
-        else
-            run_step mkdir -p "$HOME/.local/bin"
-            run_step cp "./lueur" "$HOME/.local/bin/lueur"
-            run_step chmod +x "$HOME/.local/bin/lueur"
-        fi
-        LUEUR_INSTALLED=1
-    else
+    run_step bash -c 'curl -sSL https://lueur.dev/get | bash'
+
+    if ! command -v lueur &> /dev/null; then
         LUEUR_INSTALLED=0
+        print_error "lueur installation failed. Check $LOGFILE."
     fi
 }
 
@@ -171,13 +171,13 @@ main() {
     install_python
     install_lueur
     if [[ "$LUEUR_INSTALLED" -eq 1 ]]; then
-        print_success "lueur installed"
+        print_success "lueur installed: $(command -v lueur)"
     else
         print_warning "lueur not installed"
     fi
     install_tools
-    print_success "Chaos Toolkit installed"
-    print_success "Reliably installed"
+    print_success "Chaos Toolkit installed: $(command -v  chaos)"
+    print_success "Reliably installed: $(command -v  reliably-server)"
     echo ""
     echo "Installation complete! Enjoy your freshly set up environment!"
     echo ""
