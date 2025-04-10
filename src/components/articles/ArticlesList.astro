@@ -1,2 +1,17 @@
-<h1>Articles</h1>
-<p>hello</p>
+---
+import { getCollection } from "astro:content";
+const articles = await getCollection("articles");
+---
+
+<section class="articles container">
+  <h1>Articles</h1>
+  <ul class="articles__list">
+    {
+      articles.map((a) => (
+        <li>
+          <a href={`/articles/${a.id}`}>{a.data.title}</a>
+        </li>
+      ))
+    }
+  </ul>
+</section>
