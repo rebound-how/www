@@ -1,14 +1,24 @@
 ---
+import { Image } from "astro:assets";
 import dayjs from "dayjs";
 
 interface Props {
   title: string;
   description: string;
   date: Date;
+  cover?: {
+    src: string;
+    width: number;
+    height: number;
+    format: "svg" | "png" | "jpg" | "jpeg" | "tiff" | "webp" | "gif" | "avif";
+  };
+  coverAlt?: string;
+  coverCard?: boolean;
   url: string;
 }
 
-const { title, description, date, url } = Astro.props;
+const { title, description, date, cover, coverAlt, coverCard, url } =
+  Astro.props;
 
 const dateTime = dayjs(date).format("YYYY-MM-DD");
 const publishedDate = dayjs(date).format("MMMM D, YYYY");
@@ -16,29 +26,41 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
 
 <li class="articleWrapper">
   <article class="articleCard">
-    <h2 class="articleCard__title">
-      <a href={url}>{title}</a>
-    </h2>
-    <p class="articleCard__description">{description}</p>
-    <div class="articleCard__meta">
-      <p class="articleCard__date">
-        Posted on <time datetime={dateTime}>{publishedDate}</time>
-      </p>
+    <div class="articleCard__content">
+      <h2 class="articleCard__title">
+        <a href={url}>{title}</a>
+      </h2>
+      <p class="articleCard__description">{description}</p>
+      <div class="articleCard__meta">
+        <p class="articleCard__date">
+          Posted on <time datetime={dateTime}>{publishedDate}</time>
+        </p>
+      </div>
     </div>
+    {
+      coverCard && cover && coverAlt && (
+        <div class="articleCard__image">
+          <Image src={cover} alt={coverAlt} />
+        </div>
+      )
+    }
   </article>
 </li>
 
 <style lang="scss">
   .articleCard {
+    position: relative;
+
     display: flex;
     flex-direction: column;
     height: 100%;
-    padding: var(--space-small);
+    overflow: hidden;
 
-    border: 0.1rem solid var(--grey-200);
     border-radius: var(--border-radius-m);
     box-shadow: var(--box-shadow-sharp);
     cursor: pointer;
+    outline: 0.1rem solid var(--grey-200);
+    outline-offset: -0.1rem;
 
     transition: box-shadow 0.3s ease-in-out 0.3s;
 
@@ -57,6 +79,15 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
       color: var(--text-color);
     }
 
+    &__content {
+      position: relative;
+      z-index: 2;
+
+      padding: var(--space-small);
+
+      background-color: rgba(255, 255, 255, 0.75);
+    }
+
     &__meta {
       margin-top: auto;
       padding-top: var(--space-small);
@@ -64,6 +95,22 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
 
     &__date {
       color: var(--text-color-dim);
+    }
+
+    &__image {
+      position: absolute;
+      top: -0.1rem;
+      right: -0.1rem;
+      bottom: -0.1rem;
+      left: -0.1rem;
+      z-index: 1;
+
+      img {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+      }
     }
   }
 </style>

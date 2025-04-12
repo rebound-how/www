@@ -14,6 +14,7 @@ const articles = defineCollection({
       pubDate: z.coerce.date(),
       cover: image().optional(),
       coverAlt: z.string().optional(),
+      coverCard: z.boolean().optional(),
       isDraft: z.boolean().optional(),
     }),
 });
