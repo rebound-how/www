@@ -23,6 +23,10 @@ export const getStaticPaths = (async ({ paginate }: { paginate: any }) => {
     return data.isDraft !== true;
   });
 
+  articles.sort((a, b) => {
+    return +b.data.pubDate - +a.data.pubDate;
+  });
+
   return paginate(articles, { pageSize: 6 });
 }) satisfies GetStaticPaths;
 
