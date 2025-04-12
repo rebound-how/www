@@ -24,6 +24,36 @@ const articles = await getCollection("articles", ({ data }) => {
   </ul>
 </section>
 
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".articleCard");
+
+    Array.prototype.forEach.call(cards, (card) => {
+      let down: number,
+        up: number,
+        link = card.querySelector("h2 a");
+      card.onmousedown = () => (down = +new Date());
+      card.onmouseup = () => {
+        up = +new Date();
+        if (up - down < 200) {
+          link.click();
+        }
+      };
+    });
+
+    // cards.forEach((c) => {
+    //   const link = c.querySelector("a");
+    //   if (link) {
+    //     c.addEventListener((e: Event) => {
+    //       if (link !== e.target) {
+    //         link.click();
+    //       }
+    //     });
+    //   }
+    // });
+  });
+</script>
+
 <style lang="scss">
   .articles {
     padding-bottom: var(--space-large);
