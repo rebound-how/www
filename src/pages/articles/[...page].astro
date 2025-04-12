@@ -1,18 +1,34 @@
 ---
 import { getCollection } from "astro:content";
 
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+} from "astro";
+
 import Layout from "@/layouts/Layout.astro";
 import ArticleCard from "@/components/articles/ArticleCard.astro";
 
-export async function getStaticPaths({ paginate }: { paginate: any }) {
+// export async function getStaticPaths({ paginate }: { paginate: any }) {
+//   const articles = await getCollection("articles", ({ data }) => {
+//     return data.isDraft !== true;
+//   });
+
+//   return paginate(articles, { pageSize: 6 });
+// }
+
+export const getStaticPaths = (async ({ paginate }: { paginate: any }) => {
   const articles = await getCollection("articles", ({ data }) => {
     return data.isDraft !== true;
   });
 
   return paginate(articles, { pageSize: 6 });
-}
+}) satisfies GetStaticPaths;
 
-const { page } = Astro.props;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
 ---
 
 <Layout
@@ -24,7 +40,7 @@ const { page } = Astro.props;
       <h1>Articles</h1>
       <ul class="articles__list list-reset">
         {
-          page.data.map((article) => (
+          (page as any).data.map((article: any) => (
             <ArticleCard
               title={article.data.title}
               description={article.data.description}
