@@ -1,0 +1,35 @@
+.article {
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 80rem;
+  padding-top: var(--space-large);
+  padding-bottom: var(--space-large);
+
+  font-size: 2rem;
+
+  > blockquote {
+    border-left: 1rem solid var(--grey-200);
+  }
+
+  > img {
+    display: block;
+    margin: var(--space-large) auto;
+    max-width: 100%;
+
+    border-radius: var(--border-radius-m);
+  }
+
+  &__cover {
+    img {
+      margin-top: 0;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-medium);
+    padding-top: var(--space-large);
+  }
+}
