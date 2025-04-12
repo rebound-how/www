@@ -69,6 +69,8 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
 
       .articleCard__content {
         background-color: rgba(255, 255, 255, 0.75);
+
+        transition: background-color 0.3s ease-in-out;
       }
 
       &:not(:has(.articleCard__image)) a {
@@ -93,7 +95,7 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
 
       background-color: rgba(255, 255, 255, 1);
 
-      transition: background-color 0.3s ease-in-out;
+      transition: background-color 0.3s ease-in-out 0.3s;
     }
 
     &__meta {
