@@ -67,7 +67,11 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
 
       transition: box-shadow 0.3s ease-in-out;
 
-      a {
+      .articleCard__content {
+        background-color: rgba(255, 255, 255, 0.75);
+      }
+
+      &:not(:has(.articleCard__image)) a {
         color: var(--accent-color);
         text-decoration: underline;
       }
@@ -75,6 +79,7 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
 
     a {
       color: var(--text-color);
+      text-decoration: none;
     }
 
     &__content {
@@ -86,7 +91,9 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
       height: 100%;
       padding: var(--space-small);
 
-      background-color: rgba(255, 255, 255, 0.75);
+      background-color: rgba(255, 255, 255, 1);
+
+      transition: background-color 0.3s ease-in-out;
     }
 
     &__meta {
@@ -105,6 +112,9 @@ const publishedDate = dayjs(date).format("MMMM D, YYYY");
       bottom: -0.1rem;
       left: -0.1rem;
       z-index: 1;
+
+      // transform: translateY(100%);
+      // transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
 
       img {
         display: block;
