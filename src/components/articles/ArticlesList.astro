@@ -1,17 +1,37 @@
 ---
 import { getCollection } from "astro:content";
-const articles = await getCollection("articles");
+
+import ArticleCard from "@/components/articles/ArticleCard.astro";
+
+const articles = await getCollection("articles", ({ data }) => {
+  return data.isDraft !== true;
+});
 ---
 
 <section class="articles container">
   <h1>Articles</h1>
-  <ul class="articles__list">
+  <ul class="articles__list list-reset">
     {
       articles.map((a) => (
-        <li>
-          <a href={`/articles/${a.id}`}>{a.data.title}</a>
-        </li>
+        <ArticleCard
+          title={a.data.title}
+          description={a.data.description}
+          date={a.data.pubDate}
+          url={`/articles/${a.id}`}
+        />
       ))
     }
   </ul>
 </section>
+
+<style lang="scss">
+  .articles {
+    padding-bottom: var(--space-large);
+
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      gap: var(--space-medium);
+    }
+  }
+</style>

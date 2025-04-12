@@ -1,0 +1,69 @@
+---
+import dayjs from "dayjs";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  url: string;
+}
+
+const { title, description, date, url } = Astro.props;
+
+const dateTime = dayjs(date).format("YYYY-MM-DD");
+const publishedDate = dayjs(date).format("MMMM D, YYYY");
+---
+
+<li class="articleWrapper">
+  <article class="articleCard">
+    <h2 class="articleCard__title">
+      <a href={url}>{title}</a>
+    </h2>
+    <p class="articleCard__description">{description}</p>
+    <div class="articleCard__meta">
+      <p class="articleCard__date">
+        Posted on <time datetime={dateTime}>{publishedDate}</time>
+      </p>
+    </div>
+  </article>
+</li>
+
+<style lang="scss">
+  .articleCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: var(--space-small);
+
+    border: 0.1rem solid var(--grey-200);
+    border-radius: var(--border-radius-m);
+    box-shadow: var(--box-shadow-sharp);
+    cursor: pointer;
+
+    transition: box-shadow 0.3s ease-in-out 0.3s;
+
+    &:hover {
+      box-shadow: var(--box-shadow-diffuse);
+
+      transition: box-shadow 0.3s ease-in-out;
+
+      a {
+        color: var(--accent-color);
+        text-decoration: underline;
+      }
+    }
+
+    a {
+      color: var(--text-color);
+    }
+
+    &__meta {
+      margin-top: auto;
+      padding-top: var(--space-small);
+    }
+
+    &__date {
+      color: var(--text-color-dim);
+    }
+  }
+</style>
