@@ -91,8 +91,16 @@ const isPageNeeded: boolean = (page as Page).lastPage > 1;
 
     &__list {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+      grid-template-columns: 1fr;
       gap: var(--space-medium);
+
+      @media (width > 50rem) {
+        grid-template-columns: 2fr;
+      }
+
+      @media (width > 70rem) {
+        grid-template-columns: 3fr;
+      }
     }
   }
 </style>
