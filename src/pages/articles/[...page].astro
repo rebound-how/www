@@ -95,11 +95,11 @@ const isPageNeeded: boolean = (page as Page).lastPage > 1;
       gap: var(--space-medium);
 
       @media (width > 50rem) {
-        grid-template-columns: 2fr;
+        grid-template-columns: repeat(2, 1fr);
       }
 
       @media (width > 70rem) {
-        grid-template-columns: 3fr;
+        grid-template-columns: repeat(3, 1fr);
       }
     }
   }
