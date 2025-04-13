@@ -5,18 +5,14 @@ import type {
   InferGetStaticParamsType,
   InferGetStaticPropsType,
   GetStaticPaths,
+  Page,
 } from "astro";
+
+import type { PagerData } from "@/types/types";
 
 import Layout from "@/layouts/Layout.astro";
 import ArticleCard from "@/components/articles/ArticleCard.astro";
-
-// export async function getStaticPaths({ paginate }: { paginate: any }) {
-//   const articles = await getCollection("articles", ({ data }) => {
-//     return data.isDraft !== true;
-//   });
-
-//   return paginate(articles, { pageSize: 6 });
-// }
+import Pager from "@/components/Pager.astro";
 
 export const getStaticPaths = (async ({ paginate }: { paginate: any }) => {
   const articles = await getCollection("articles", ({ data }) => {
@@ -33,6 +29,14 @@ export const getStaticPaths = (async ({ paginate }: { paginate: any }) => {
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { page } = Astro.props as Props;
+
+const pagerPage: PagerData = {
+  currentPage: (page as Page).currentPage,
+  lastPage: (page as Page).lastPage,
+  urlBase: "articles",
+};
+
+const isPageNeeded: boolean = (page as Page).lastPage > 1;
 ---
 
 <Layout
@@ -57,6 +61,7 @@ const { page } = Astro.props as Props;
           ))
         }
       </ul>
+      {isPageNeeded && <Pager page={pagerPage} />}
     </section>
   </main>
 </Layout>

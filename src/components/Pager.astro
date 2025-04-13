@@ -1,0 +1,235 @@
+---
+import type { PagerData, PagerPage } from "@/types/types";
+
+interface Props {
+  page: PagerData;
+}
+
+const { page } = Astro.props;
+
+let pagesArray: PagerPage[] = [];
+
+const previousPage: string | undefined =
+  page.currentPage === 1
+    ? undefined
+    : page.currentPage === 2
+      ? `/${page.urlBase}/`
+      : `/${page.urlBase}/${page.currentPage - 1}/`;
+
+const nextPage: string | undefined =
+  page.currentPage === page.lastPage
+    ? undefined
+    : `/${page.urlBase}/${page.currentPage + 1}/`;
+
+const noPreviousPage: boolean = page.currentPage === 1;
+
+const noNextPage: boolean = page.currentPage === page.lastPage;
+
+const hasLessThan10: boolean = page.lastPage <= 9;
+const isCurrent2OrMore: boolean = page.currentPage >= 2;
+const isCurrentOver3: boolean = page.currentPage > 3;
+const isCurrent3OrMore: boolean = page.currentPage >= 3;
+const isCurrentBeforePenultimate: boolean =
+  page.currentPage <= page.lastPage - 2;
+const isCurrentEvenBeforePenultimate: boolean =
+  page.currentPage < page.lastPage - 2;
+const isCurrentPenultimateOrBefore: boolean =
+  page.currentPage <= page.lastPage - 1;
+
+const buildArray = async (): Promise<void> => {
+  pagesArray = [];
+  for (let i: number = 1; i <= page.lastPage; i++) {
+    pagesArray.push({
+      number: i,
+      url: i === 1 ? `/${page.urlBase}/` : `/${page.urlBase}/${i.toString()}/`,
+    });
+  }
+};
+
+await buildArray();
+---
+
+<nav class="pager" role="navigation" aria-label="pagination">
+  <ul class="list-reset" v-if="isReady">
+    <li>
+      <a href={previousPage} class:list={[{ disabled: noPreviousPage }]}>
+        <span class="screen-reader-text">
+          Previous {noPreviousPage && <span>(Disabled)</span>}</span
+        >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-arrow-left"
+        >
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+    </li>
+    {
+      hasLessThan10
+        ? pagesArray.map((p) => (
+            <li>
+              <a
+                href={p.url}
+                class:list={[{ active: p.number === page.currentPage }]}
+              >
+                {p.number.toString()}
+              </a>
+            </li>
+          ))
+        : (
+            isCurrent2OrMore && (
+              <li>
+                <a
+                  href={pagesArray[0].url}
+                  class:list={[{ active: page.currentPage === 1 }]}
+                >
+                  1
+                </a>
+              </li>
+            )
+          )(
+            isCurrentOver3 && (
+              <li>
+                <span class="filler">...</span>
+              </li>
+            ),
+          )(
+            isCurrent3OrMore && (
+              <li>
+                <a href={pagesArray[page.currentPage - 2].url}>
+                  {pagesArray[page.currentPage - 2].number}
+                </a>
+              </li>
+            ),
+          )(
+            <li>
+              <a href={pagesArray[page.currentPage - 1].url} class="active">
+                {pagesArray[page.currentPage - 1].number}
+              </a>
+            </li>,
+          )(
+            isCurrentBeforePenultimate && (
+              <li>
+                <a href={pagesArray[page.currentPage].url}>
+                  {pagesArray[page.currentPage].number}
+                </a>
+              </li>
+            ),
+          )(
+            isCurrentEvenBeforePenultimate && (
+              <li>
+                <span class="filler">...</span>
+              </li>
+            ),
+          )(
+            isCurrentPenultimateOrBefore && (
+              <li>
+                <a
+                  href={pagesArray[page.lastPage - 1].url}
+                  class:list={[{ active: page.currentPage === page.lastPage }]}
+                >
+                  {page.lastPage}
+                </a>
+              </li>
+            ),
+          )
+    }
+    <li>
+      <a href={nextPage} class:list={[{ disabled: noNextPage }]}>
+        <span class="screen-reader-text">
+          Next {noNextPage && <span>(Disabled)</span>}
+        </span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="feather feather-arrow-right"
+        >
+          <line x1="5" y1="12" x2="19" y2="12"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+<style lang="scss">
+  .pager {
+    margin-top: var(--space-large);
+    margin-bottom: var(--space-small);
+    ul {
+      display: flex;
+      justify-content: center;
+    }
+
+    li {
+      &:not(:last-child) {
+        margin-right: 1.2rem;
+      }
+    }
+
+    a,
+    .filler {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 3.6rem;
+      width: 3.6rem;
+
+      border-radius: 50%;
+      cursor: pointer;
+
+      color: var(--text-color);
+      font-weight: 500;
+    }
+
+    a {
+      position: relative;
+
+      padding: 0;
+
+      background-color: transparent;
+      border: none;
+
+      text-decoration: none;
+
+      svg {
+        height: 2rem;
+      }
+
+      &:hover {
+        background-color: var(--pagination-button-hover);
+
+        color: var(--text-color-bright);
+      }
+
+      &.active {
+        background-color: var(--accent-color);
+        cursor: default;
+
+        color: white;
+      }
+
+      &.disabled {
+        cursor: default;
+        opacity: 0.5;
+
+        &:hover {
+          background-color: transparent;
+          color: var(--text-color);
+        }
+      }
+    }
+  }
+</style>
