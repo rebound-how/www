@@ -1,8 +1,16 @@
 ---
+import { getCollection } from "astro:content";
+
 import Rebound from "@/components/Rebound.astro";
 import GitHub from "@/components/GitHub.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
+
+const articles = await getCollection("articles", ({ data }) => {
+  return data.isDraft !== true;
+});
+
+const displayArticlesLink: boolean = articles.length > 0;
 ---
 
 <header class="header">
@@ -13,6 +21,16 @@ const pathname = new URL(Astro.request.url).pathname;
       </a>
     </div>
     <nav class="header__menu">
+      {
+        displayArticlesLink && (
+          <a
+            href="/articles/"
+            aria-current={pathname.startsWith("/articles") ? "page" : false}
+          >
+            Articles
+          </a>
+        )
+      }
       <a
         href="/support/"
         aria-current={pathname === "/support/" ? "page" : false}
