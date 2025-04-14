@@ -1,6 +1,6 @@
 ---
 import { getCollection, render } from "astro:content";
-import { Image } from "astro:assets";
+import { Image, getImage } from "astro:assets";
 import Layout from "@/layouts/Layout.astro";
 
 // 1. Generate a new path for every collection entry
@@ -14,9 +14,19 @@ export async function getStaticPaths() {
 // 2. For your template, you can get the entry directly from the prop
 const { post } = Astro.props;
 const { Content } = await render(post);
+
+let openGraphImage = new URL("https://rebound.how/social.png", Astro.site);
+if (post.data.cover !== undefined) {
+  const image = await getImage({ src: post.data.cover, format: "jpg" });
+  openGraphImage = new URL(image.src, Astro.site);
+}
 ---
 
-<Layout title={post.data.title} description={post.data.description}>
+<Layout
+  title={post.data.title}
+  description={post.data.description}
+  image={openGraphImage}
+>
   <main class="article">
     {
       post.data.cover && post.data.coverAlt && (
