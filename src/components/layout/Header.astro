@@ -55,7 +55,7 @@ const displayArticlesLink: boolean = articles.length > 0;
       justify-content: space-between;
       gap: var(--space-medium);
 
-      @media (width > 30rem) {
+      @media (width > 40rem) {
         flex-direction: row;
       }
     }
@@ -71,7 +71,11 @@ const displayArticlesLink: boolean = articles.length > 0;
     &__menu {
       display: flex;
       align-items: center;
-      gap: var(--space-small);
+      gap: 0.6rem;
+
+      @media (min-width: 30rem) {
+        gap: var(--space-small);
+      }
 
       a:not([class]) {
         position: relative;
