@@ -1,0 +1,106 @@
+---
+import { getCollection } from "astro:content";
+
+import type {
+  InferGetStaticParamsType,
+  InferGetStaticPropsType,
+  GetStaticPaths,
+  Page,
+} from "astro";
+
+import type { PagerData } from "@/types/types";
+
+import Layout from "@/layouts/Layout.astro";
+import ArticleCard from "@/components/articles/ArticleCard.astro";
+import Pager from "@/components/Pager.astro";
+
+export const getStaticPaths = (async ({ paginate }: { paginate: any }) => {
+  const articles = await getCollection("articles", ({ data }) => {
+    return data.isDraft !== true;
+  });
+
+  articles.sort((a, b) => {
+    return +b.data.pubDate - +a.data.pubDate;
+  });
+
+  return paginate(articles, { pageSize: 6 });
+}) satisfies GetStaticPaths;
+
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { page } = Astro.props as Props;
+
+const pagerPage: PagerData = {
+  currentPage: (page as Page).currentPage,
+  lastPage: (page as Page).lastPage,
+  urlBase: "articles",
+};
+
+const isPageNeeded: boolean = (page as Page).lastPage > 1;
+---
+
+<Layout
+  title="The open source resilience suite"
+  description="Rebound is an open-source suite to make sure your users can rely on you"
+>
+  <main class="articles">
+    <section class="articles container">
+      <h1>Articles</h1>
+      <ul class="articles__list list-reset">
+        {
+          (page as any).data.map((article: any) => (
+            <ArticleCard
+              title={article.data.title}
+              description={article.data.description}
+              date={article.data.pubDate}
+              cover={article.data.cover}
+              coverAlt={article.data.coverAlt}
+              coverCard={article.data.coverCard}
+              url={`/articles/${article.id}`}
+            />
+          ))
+        }
+      </ul>
+      {isPageNeeded && <Pager page={pagerPage} />}
+    </section>
+  </main>
+</Layout>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const cards = document.querySelectorAll(".articleCard");
+
+    Array.prototype.forEach.call(cards, (card) => {
+      let down: number,
+        up: number,
+        link = card.querySelector("h2 a");
+      card.onmousedown = () => (down = +new Date());
+      card.onmouseup = () => {
+        up = +new Date();
+        if (up - down < 200) {
+          link.click();
+        }
+      };
+    });
+  });
+</script>
+
+<style lang="scss">
+  .articles {
+    padding-bottom: var(--space-large);
+
+    &__list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--space-medium);
+
+      @media (width > 50rem) {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      @media (width > 70rem) {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  }
+</style>

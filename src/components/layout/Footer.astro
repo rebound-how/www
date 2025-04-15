@@ -1,5 +1,13 @@
 ---
+import { getCollection } from "astro:content";
+
 import Rebound from "@/components/Rebound.astro";
+
+const articles = await getCollection("articles", ({ data }) => {
+  return data.isDraft !== true;
+});
+
+const displayArticlesLink: boolean = articles.length > 0;
 ---
 
 <footer class="footer">
@@ -10,6 +18,7 @@ import Rebound from "@/components/Rebound.astro";
       </a>
     </div>
     <div class="footerLinks">
+      {displayArticlesLink && <a href="/articles/">Articles</a>}
       <a href="/support/">Support</a>
       <a href="/support/#contact">Contact</a>
     </div>

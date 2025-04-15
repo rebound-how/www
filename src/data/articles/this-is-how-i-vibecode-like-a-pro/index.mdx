@@ -1,0 +1,110 @@
+---
+title: This is How I VibeCode Like a PRO😎
+description: Vibe Coding is when you stop worrying about syntax and let AI tools like Copilot or Cursor handle the code while you focus on high-level logic.
+cover: "./header-image.webp"
+coverAlt: "An AI generated image of a robot working on a laptop while a human is listening to music next to it."
+coverCard: true
+pubDate: 2025-04-12
+isDraft: false
+---
+
+import { Image } from "astro:assets";
+import manCoding from "./man-music.webp";
+import andrej from "./andrej-tweet.webp";
+import chatgpt from "./chatgpt-coding.png";
+import leo from "./leo-tweet.webp";
+
+No, Vibe Coding isn’t just about blasting your favorite Spotify playlist while writing code. Though let’s be honest, music does help. But that’s not what we’re talking about here.
+
+## TL;DR
+
+> Vibe Coding is when you stop worrying about syntax and let AI tools like Copilot or Cursor handle the code while you focus on high-level logic. What started as a casual tweet from Karpathy is now a growing trend in dev circles, backed by real productivity data.
+> But it’s not magic. Bad prompts, lack of fundamentals, and hallucinations can wreck your output. This article breaks down how Vibe Coding works, why it matters, and how to do it effectively without losing control of your codebase.
+
+<Image
+  src={manCoding}
+  alt="A bearded man is working on his laptop while listening to music with headphones."
+/>
+
+## So, What is Vibe Coding?
+
+It all started when Andrej Karpathy tweeted about letting a Large Language Model (LLM) build his project. He casually called it: **“Vibe Coding”**. What began as a playful tweet quickly caught fire. Developers resonated with the term, tech influencers amplified it, and before long, 'Vibe Coding' was making its rounds across conferences, blogs, and even academic discussions. It gained enough traction to earn its own [Wikipedia](https://en.wikipedia.org/wiki/Vibe_coding) page and is now recognized as a legitimate emerging practice in AI-assisted software development.
+
+<Image
+  src={andrej}
+  alt="A tweet by Andrej Karphaty, username @karphaty. There's a new kind of coding | call &quot;vibe coding&quot;, where you fully give in to the vibes, embrace exponentials, and forget that the code even exists. It's possible because the LLMs (e.g. Cursor Composer w Sonnet) are getting too good. Also I just talk to Composer with SuperWhisper so l barely even touch the keyboard. I ask for the dumbest things like &quot;decrease the padding on the sidebar by half&quot; because I'm too lazy to find it. I &quot;Accept All&quot; always, I don't read the diffs anymore. When I get error messages I just copy paste them in with no comment, usually that fixes it. The code grows beyond my usual comprehension, l'd have to really read through it for a while. Sometimes the LLMs can't fix a bug so l just work around it or ask for random changes until it goes away. It's not too bad for throwaway weekend projects, but still quite amusing. I'm building a project or webapp, but it's not really coding - I just see stuff, say stuff, run stuff, and copy paste stuff, and it mostly works. 4:47 AM • Feb 3, 2025 • 4.5M Views"
+/>
+
+> Vibe Coding is when developers use AI to generate complete codebases while they simply provide high-level instructions through prompts.
+
+Many developers today are joking and also kind of serious, when they say:
+
+**“The hottest new programming language is English.”**
+
+Why? Because with tools like ChatGPT, Gemini, Claude, and others LLMs are no longer just fancy question-answer chatbots. They're producing real, production-grade code and they're improving at a mind-blowing pace.
+
+Meta CEO Mark Zuckerberg even said that, AI at Meta already achieved performance at the level of mid-tier software engineers. Let that sink in: “mid-level devs”. Scary Right??
+
+Oh, and by the end of 2025, it's estimated that **80–90%** of code might be AI-generated.
+
+## The Effect of Vibe Coding
+
+Vibe Coding isn’t just a cool idea, it’s showing **real** productivity gains.
+
+According to GitHub's [research](https://github.blog/news-insights/research/research-quantifying-github-copilots-impact-on-developer-productivity-and-happiness/), developers using tools like Copilot were **55% faster** than those coding without AI sidekicks. Naturally, developers are now spinning up MVPs, weekend hacks, and even full-blown startups in record time, and bragging about it on X (formerly Twitter).
+
+Things that took days, Now done in hours!!!
+
+Deadlines? Who?
+
+## But There’s a Catch…
+
+AI tools like Copilot, Cursor, and Windsurf are powered by LLMs, which means they’re only as smart as the prompts you give them and sometimes they hallucinate harder than a developer on their seventh cup of office coffee at 3 a.m.
+
+They can:
+
+- Misunderstand context,
+- Produce broken logic,
+- Or just invent functions that don’t even exist.
+
+<Image
+  src={chatgpt}
+  alt="A four panel comic. First two panels are Before Chat GPT. First panel, a man is thinking in front of his computer. The legend says: Developer coding 2 hours. Second panel is the man with his head in his hands. The legend says: Developer debugging 6 hours. Last two panels are After Chat GPT. Third panel, there's nobody in front of the computer. The legend says: ChatGPT generating code 5 minutes. Fourth panel is the man with his head in his hands. The legend says: Developer debugging 24 hours."
+/>
+
+Let’s not forget the guy on X who tried Vibe Coding in public without knowing what he was doing and accidentally leaked his API keys.
+
+<Image
+  src={leo}
+  alt="A tweet by Leo, username @leojr94_. guys, i'm under attack ever since I started to share how I built my SaaS using Cursor. random thing are happening, maxed out usage on api keys, people bypassing the subscription, creating random shit on db. as you know, I'm not technical so this is taking me longer that usual to figure out. for now, I will stop sharing what I do publicly on X. there are just some weird ppl out there. 2:34 PM • Mar 17, 2025 • 2.2M Views"
+/>
+
+Don't be _that_ person.
+
+If you're serious about shipping AI-assisted code, **use safety nets**.
+
+One highly recommended tool: **[Entelligence AI](https://dub.sh/9xiauBT)’s PR Bot**. It reviews your pull requests, catches issues early, including security flaws and gives intelligent suggestions. Because catching a bug _before_ production is way cooler than finding that missing semi-colon ( ; ) at 2 a.m. while praying nothing else breaks. It's like having a tireless reviewer on your team.
+
+## So, How to be a good Vibe Coder??
+
+It all comes down to **prompt engineering**. Since LLMs rely entirely on your input, your ability to communicate clearly is everything.
+
+If you want to level up as a Vibe Coder, follow these golden rules:
+
+- **Define before you prompt.** Know what you're building, the problem it's solving, and the tech stack you're using. High-level direction leads to better outputs.
+- **Understand core dev practices.** AI can help you write code, but it won't replace fundamentals like good architecture, testing strategy, or sustainable design patterns.
+- **Be precise.** Write prompts like you're mentoring a junior developer. Avoid vague instructions, specificity drives accuracy.
+- **Decompose tasks.** Break down features into logical, bite-sized units. Guide the AI one step at a time for better consistency.
+- **Keep the conversation structured.** Tackle one objective at a time. Jumping between unrelated ideas confuses both humans and machines.
+- **Prioritize clean, modular code.** Even with AI assistance, well-organized code makes future changes manageable. You're still responsible for long-term maintainability.
+- **Use version control religiously.** AI-generated code can go off-script. Git is your undo button, commit after every successful update.
+- **Always review AI output.** Just because code compiles doesn’t mean it's secure, performant, or even correct.
+- **Supercharge your safety net.** Tools like [Entelligence AI](https://dub.sh/9xiauBT) review your pull requests intelligently, detect issues early, and suggest improvements like having a senior dev watching your back.
+
+## Conclusion
+
+Vibe Coding isn’t a passing trend, it’s a fundamental shift in how software is built. AI isn’t here to replace developers. It’s here to support the ones who know how to harness it effectively.
+
+So, It’s time to sit down, put on your favorite playlist, load your favorite AI Code Editor and build something awesome 🚀🚀🚀
+
+Let us know in the comment what **YOU** will be Vibe Coding next!!!
