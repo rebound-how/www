@@ -3,7 +3,7 @@ import { getCollection } from "astro:content";
 
 import Rebound from "@/components/Rebound.astro";
 
-const articles = await getCollection("articles", ({ data }) => {
+const articles = await getCollection("writing", ({ data }) => {
   return data.isDraft !== true;
 });
 
@@ -18,7 +18,7 @@ const displayArticlesLink: boolean = articles.length > 0;
       </a>
     </div>
     <div class="footerLinks">
-      {displayArticlesLink && <a href="/articles/">Articles</a>}
+      {displayArticlesLink && <a href="/writing/">Writing</a>}
       <a href="/support/">Support</a>
       <a href="/support/#contact">Contact</a>
     </div>

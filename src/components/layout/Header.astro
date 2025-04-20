@@ -6,7 +6,7 @@ import GitHub from "@/components/GitHub.astro";
 
 const pathname = new URL(Astro.request.url).pathname;
 
-const articles = await getCollection("articles", ({ data }) => {
+const articles = await getCollection("writing", ({ data }) => {
   return data.isDraft !== true;
 });
 
@@ -24,10 +24,10 @@ const displayArticlesLink: boolean = articles.length > 0;
       {
         displayArticlesLink && (
           <a
-            href="/articles/"
-            aria-current={pathname.startsWith("/articles") ? "page" : false}
+            href="/writing/"
+            aria-current={pathname.startsWith("/writing") ? "page" : false}
           >
-            Articles
+            Writing
           </a>
         )
       }
