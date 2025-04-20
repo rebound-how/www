@@ -11,11 +11,11 @@ import type {
 import type { PagerData } from "@/types/types";
 
 import Layout from "@/layouts/Layout.astro";
-import ArticleCard from "@/components/articles/ArticleCard.astro";
+import ArticleCard from "@/components/writing/ArticleCard.astro";
 import Pager from "@/components/Pager.astro";
 
 export const getStaticPaths = (async ({ paginate }: { paginate: any }) => {
-  const articles = await getCollection("articles", ({ data }) => {
+  const articles = await getCollection("writing", ({ data }) => {
     return data.isDraft !== true;
   });
 
@@ -33,7 +33,7 @@ const { page } = Astro.props as Props;
 const pagerPage: PagerData = {
   currentPage: (page as Page).currentPage,
   lastPage: (page as Page).lastPage,
-  urlBase: "articles",
+  urlBase: "writing",
 };
 
 const isPageNeeded: boolean = (page as Page).lastPage > 1;
@@ -56,7 +56,7 @@ const isPageNeeded: boolean = (page as Page).lastPage > 1;
               cover={article.data.cover}
               coverAlt={article.data.coverAlt}
               coverCard={article.data.coverCard}
-              url={`/articles/${article.id}`}
+              url={`/writing/${article.id}`}
             />
           ))
         }

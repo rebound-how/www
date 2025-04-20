@@ -5,7 +5,7 @@ import Layout from "@/layouts/Layout.astro";
 
 // 1. Generate a new path for every collection entry
 export async function getStaticPaths() {
-  const posts = await getCollection("articles");
+  const posts = await getCollection("writing");
   return posts.map((post) => ({
     params: { id: post.id },
     props: { post },
@@ -38,7 +38,7 @@ if (post.data.cover !== undefined) {
     <h1>{post.data.title}</h1>
     <Content />
     <div class="article__actions">
-      <a href="/articles/" class="button button--primary">More Articles</a>
+      <a href="/writing/" class="button button--primary">More Articles</a>
     </div>
   </main>
 </Layout>

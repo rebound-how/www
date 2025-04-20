@@ -5,7 +5,7 @@ import { defineCollection, z } from "astro:content";
 import { glob, file } from "astro/loaders";
 
 // 3. Define your collection(s)
-const articles = defineCollection({
+const writing = defineCollection({
   loader: glob({ pattern: "**/*.(md|mdx)", base: "./src/data/articles" }),
   schema: ({ image }) =>
     z.object({
@@ -20,4 +20,4 @@ const articles = defineCollection({
 });
 
 // 4. Export a single `collections` object to register your collection(s)
-export const collections = { articles };
+export const collections = { writing };
