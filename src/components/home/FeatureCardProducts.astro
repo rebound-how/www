@@ -10,15 +10,15 @@ interface Props {
 const { products } = Astro.props;
 
 const availableProducts: Feature["products"] = [
-  "lueur",
+  "fault",
   "chaostoolkit",
   "reliably",
 ];
 
 function translateProductName(p: ProductName): string {
   switch (p) {
-    case "lueur":
-      return "Lueur";
+    case "fault":
+      return "fault";
     case "reliably":
       return "Reliably";
     case "chaostoolkit":

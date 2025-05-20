@@ -6,7 +6,7 @@ import Terminal from "@/components/Terminal.astro";
 
 import ReliablyScreenshot from "@/assets/reliably-screenshot.png";
 
-const lueurTerminal = `<span class="term-dim">$</span> lueur scenario run --scenario scenario.yaml
+const faultTerminal = `<span class="term-dim">$</span> fault scenario run --scenario scenario.yaml
 
 <span class="term-dim">================ Running Scenarios ================</span>
 
@@ -22,7 +22,7 @@ Total time: 2.4s
 
 Report saved as <span class="term-yellow">report.json</span>`;
 
-const lueurTerm = `$ lueur scenario run --scenario scenario.yaml
+const faultTerm = `$ fault scenario run --scenario scenario.yaml
 
 ================ Running Scenarios ================
 
@@ -90,8 +90,8 @@ const chaostoolkitTerm = `$ chaos run policy.json
       <article class="product" style="--shadow-color: 240, 141, 54;">
         <header class="product__header">
           <h3>
-            <span class="screen-reader-text">Lueur</span>
-            <Icon name="lueur" />
+            <span class="screen-reader-text">fault</span>
+            <Icon name="fault" />
           </h3>
           <p>Developer-Friendly Reliability</p>
         </header>
@@ -124,17 +124,17 @@ const chaostoolkitTerm = `$ chaos run policy.json
           </ul>
           <div
             class="productMedia"
-            id="lueurTerm"
+            id="faultTerm"
             data-show-when="has-highlight-support"
           >
-            <Terminal content={lueurTerm} />
+            <Terminal content={faultTerm} />
           </div>
           <div class="productMedia" data-show-when="no-highlight-support">
-            <Terminal content={lueurTerminal} />
+            <Terminal content={faultTerminal} />
           </div>
         </div>
         <div class="product__link">
-          <a href="https://lueur.dev/" class="button button--primary"
+          <a href="https://fault-project.com/" class="button button--primary"
             >Read the docs</a
           >
         </div>
@@ -427,8 +427,8 @@ const chaostoolkitTerm = `$ chaos run policy.json
     } else {
       document.body.classList.add("no-highlight-support");
     }
-    const lueurTerm = document.getElementById("lueurTerm");
-    const lueur = lueurTerm?.querySelector("pre");
+    const faultTerm = document.getElementById("faultTerm");
+    const fault = faultTerm?.querySelector("pre");
     const ctkTerm = document.getElementById("chaostoolkitTerm");
     const ctk = ctkTerm?.querySelector("pre");
 
@@ -437,70 +437,70 @@ const chaostoolkitTerm = `$ chaos run policy.json
     const r = new Highlight();
     const t = new Highlight();
     const y = new Highlight();
-    if (lueur) {
+    if (fault) {
       const d0 = new Range();
-      d0.setStart(lueur.firstChild!, 0);
-      d0.setEnd(lueur.firstChild!, 1);
+      d0.setStart(fault.firstChild!, 0);
+      d0.setEnd(fault.firstChild!, 1);
       d.add(d0);
       const d1 = new Range();
-      d1.setStart(lueur.firstChild!, 47);
-      d1.setEnd(lueur.firstChild!, 98);
+      d1.setStart(fault.firstChild!, 47);
+      d1.setEnd(fault.firstChild!, 98);
       d.add(d1);
       const d2 = new Range();
-      d2.setStart(lueur.firstChild!, 335);
-      d2.setEnd(lueur.firstChild!, 386);
+      d2.setStart(fault.firstChild!, 335);
+      d2.setEnd(fault.firstChild!, 386);
       d.add(d2);
 
       const g1 = new Range();
-      g1.setStart(lueur.firstChild!, 100);
-      g1.setEnd(lueur.firstChild!, 101);
+      g1.setStart(fault.firstChild!, 100);
+      g1.setEnd(fault.firstChild!, 101);
       g.add(g1);
       const g2 = new Range();
-      g2.setStart(lueur.firstChild!, 156);
-      g2.setEnd(lueur.firstChild!, 159);
+      g2.setStart(fault.firstChild!, 156);
+      g2.setEnd(fault.firstChild!, 159);
       g.add(g2);
       const g3 = new Range();
-      g3.setStart(lueur.firstChild!, 161);
-      g3.setEnd(lueur.firstChild!, 162);
+      g3.setStart(fault.firstChild!, 161);
+      g3.setEnd(fault.firstChild!, 162);
       g.add(g3);
       const g4 = new Range();
-      g4.setStart(lueur.firstChild!, 227);
-      g4.setEnd(lueur.firstChild!, 228);
+      g4.setStart(fault.firstChild!, 227);
+      g4.setEnd(fault.firstChild!, 228);
       g.add(g4);
       const g5 = new Range();
-      g5.setStart(lueur.firstChild!, 229);
-      g5.setEnd(lueur.firstChild!, 230);
+      g5.setStart(fault.firstChild!, 229);
+      g5.setEnd(fault.firstChild!, 230);
       g.add(g5);
       const g6 = new Range();
-      g6.setStart(lueur.firstChild!, 274);
-      g6.setEnd(lueur.firstChild!, 275);
+      g6.setStart(fault.firstChild!, 274);
+      g6.setEnd(fault.firstChild!, 275);
       g.add(g6);
       const g7 = new Range();
-      g7.setStart(lueur.firstChild!, 332);
-      g7.setEnd(lueur.firstChild!, 333);
+      g7.setStart(fault.firstChild!, 332);
+      g7.setEnd(fault.firstChild!, 333);
       g.add(g7);
 
       const r1 = new Range();
-      r1.setStart(lueur.firstChild!, 159);
-      r1.setEnd(lueur.firstChild!, 160);
+      r1.setStart(fault.firstChild!, 159);
+      r1.setEnd(fault.firstChild!, 160);
       r.add(r1);
       const r2 = new Range();
-      r2.setStart(lueur.firstChild!, 272);
-      r2.setEnd(lueur.firstChild!, 273);
+      r2.setStart(fault.firstChild!, 272);
+      r2.setEnd(fault.firstChild!, 273);
       r.add(r2);
       const r3 = new Range();
-      r3.setStart(lueur.firstChild!, 416);
-      r3.setEnd(lueur.firstChild!, 417);
+      r3.setStart(fault.firstChild!, 416);
+      r3.setEnd(fault.firstChild!, 417);
       r.add(r3);
 
       const t1 = new Range();
-      t1.setStart(lueur.firstChild!, 399);
-      t1.setEnd(lueur.firstChild!, 400);
+      t1.setStart(fault.firstChild!, 399);
+      t1.setEnd(fault.firstChild!, 400);
       t.add(t1);
 
       const y1 = new Range();
-      y1.setStart(lueur.firstChild!, 452);
-      y1.setEnd(lueur.firstChild!, 463);
+      y1.setStart(fault.firstChild!, 452);
+      y1.setEnd(fault.firstChild!, 463);
       y.add(y1);
     }
 
