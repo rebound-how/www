@@ -7,7 +7,7 @@ export interface Feature {
   products: NonEmptyArray<ProductName>;
 }
 
-export type ProductName = "lueur" | "reliably" | "chaostoolkit";
+export type ProductName = "fault" | "reliably" | "chaostoolkit";
 
 export interface PagerData {
   currentPage: number;

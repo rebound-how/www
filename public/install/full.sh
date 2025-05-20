@@ -10,7 +10,7 @@
 # Rebound installer
 #
 # This sets up:
-#   • lueur         - a self-contained binary (Linux/macOS)
+#   • fault         - a self-contained binary (Linux/macOS)
 #   • Chaos Toolkit - a Python package
 #   • Reliably      - a Python application using PostgreSQL 17 as its DB
 #
@@ -138,15 +138,15 @@ install_tools() {
 }
 
 #---------------------------------------------------------------------
-# Install the lueur binary if present.
+# Install the fault binary if present.
 #---------------------------------------------------------------------
-LUEUR_INSTALLED=1
-install_lueur() {
-    run_step bash -c 'curl -sSL https://lueur.dev/get | bash'
+FAULT_CLI_INSTALLED=1
+install_fault_cli() {
+    run_step bash -c 'curl -sSL https://fault-project.com/get | bash'
 
-    if ! command -v lueur &> /dev/null; then
-        LUEUR_INSTALLED=0
-        print_error "lueur installation failed. Check $LOGFILE."
+    if ! command -v fault &> /dev/null; then
+        FAULT_CLI_INSTALLED=0
+        print_error "fault installation failed. Check $LOGFILE."
     fi
 }
 
@@ -169,11 +169,11 @@ main() {
     install_uv
     update_shell
     install_python
-    install_lueur
-    if [[ "$LUEUR_INSTALLED" -eq 1 ]]; then
-        print_success "lueur installed: $(command -v lueur)"
+    install_fault_cli
+    if [[ "$FAULT_CLI_INSTALLED" -eq 1 ]]; then
+        print_success "fault cli installed: $(command -v fault)"
     else
-        print_warning "lueur not installed"
+        print_warning "fault cli not installed"
     fi
     install_tools
     print_success "Chaos Toolkit installed: $(command -v  chaos)"
