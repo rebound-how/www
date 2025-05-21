@@ -204,13 +204,13 @@ main() {
     install_python
     install_fault_cli
     if [[ "$FAULT_CLI_INSTALLED" -eq 1 ]]; then
-        print_success "fault cli installed: $(command -v fault)"
+        print_success "fault cli installed: fault -> $(command -v fault)"
     else
         print_warning "fault cli not installed"
     fi
     install_tools
-    print_success "Chaos Toolkit installed: $(command -v  chaos)"
-    print_success "Reliably installed: $(command -v  reliably-server)"
+    print_success "Chaos Toolkit installed: chaos -> $(command -v  chaos)"
+    print_success "Reliably installed: reliably-server -> $(command -v  reliably-server)"
     echo ""
     initialize_reliably
     echo ""
