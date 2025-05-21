@@ -135,6 +135,7 @@ install_python() {
 install_tools() {
     run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} chaostoolkit
     run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} reliably-cli
+    run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} reliably-app
 }
 
 #---------------------------------------------------------------------
@@ -158,6 +159,38 @@ pull_postgresql() {
 }
 
 #---------------------------------------------------------------------
+# Initialize the Reliably settings and database
+#---------------------------------------------------------------------
+initialize_reliably() {
+    DB_PORT=5490
+    DB_PWD=$(python3 -c "import secrets; print(secrets.token_hex(4))")
+    CT_NAME=rebound-reliably-db
+
+    if docker inspect ${CT_NAME} > /dev/null 2>&1; then
+        run_step docker start ${CT_NAME}
+    else
+        run_step docker run -p ${DB_PORT}:5432 --name ${CT_NAME} -e POSTGRES_PASSWORD=${DB_PWD} -e POSTGRES_USER=reliably -e POSTGRES_DB=reliably -d postgres:17
+    fi
+
+    SETTINGS="$HOME/.config/rebound/reliably.env"
+
+    if [ ! -f "$SETTINGS" ]; then
+        run_step bash -c "curl -o $SETTINGS -sSL https://raw.githubusercontent.com/rebound-how/rebound/refs/heads/main/reliably/backend/reliably_app/cli/default.auto-install.env"
+
+        session_secret=$(python3 -c "import secrets; print(secrets.token_hex())")
+        db_crypt_secret=$(python3 -c "import base64, secrets; print(base64.b64encode(secrets.token_bytes(32)).decode('utf-8'))")
+
+        sed -i "s|<session_secret_key>|${session_secret}|g" "$SETTINGS"
+        sed -i "s|<db_secret_key>|${db_crypt_secret}|g" "$SETTINGS"
+        sed -i "s|<dbpassword>|${DB_PWD}|g" "$SETTINGS"
+        sed -i "s|<dbport>|${DB_PORT}|g" "$SETTINGS"
+
+        echo "Reliably settings found at $SETTINGS"
+    fi
+}
+
+
+#---------------------------------------------------------------------
 # Main installer: run steps and print a friendly summary gradually.
 #---------------------------------------------------------------------
 main() {
@@ -178,6 +211,8 @@ main() {
     install_tools
     print_success "Chaos Toolkit installed: $(command -v  chaos)"
     print_success "Reliably installed: $(command -v  reliably-server)"
+    echo ""
+    initialize_reliably
     echo ""
     echo "Installation complete! Enjoy your freshly set up environment!"
     echo ""
