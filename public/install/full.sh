@@ -135,7 +135,7 @@ install_python() {
 install_tools() {
     run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} chaostoolkit
     run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} reliably-cli
-    run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} reliably-app
+    run_step uv tool install --python-preference only-managed --python ${REBOUND_PYTHON_VERSION} reliably-app[gcp,full]
 }
 
 #---------------------------------------------------------------------
