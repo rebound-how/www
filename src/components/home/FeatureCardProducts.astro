@@ -10,6 +10,7 @@ interface Props {
 const { products } = Astro.props;
 
 const availableProducts: Feature["products"] = [
+  "unfault",
   "fault",
   "chaostoolkit",
   "reliably",
@@ -17,6 +18,8 @@ const availableProducts: Feature["products"] = [
 
 function translateProductName(p: ProductName): string {
   switch (p) {
+    case "unfault":
+      return "Unfault";
     case "fault":
       return "fault";
     case "reliably":
@@ -56,7 +59,7 @@ function returnSupportSentence(): string {
     availableProducts.map((p) => (
       <li class:list={["product", `product--${returnSupportClass(p)}`]}>
         <span class="productIcon">
-          <Icon name={`products-marks/${p}`} />
+          <Icon name={p === "unfault" ? "unfault" : `products-marks/${p}`} />
         </span>
       </li>
     ))
