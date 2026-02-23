@@ -23,6 +23,25 @@ At a glance
 6062ms - python / fastapi - 185 files
 Tip: use --output full to drill into hotspots.</span>`;
 
+const unlostTerminal = `<span class="term-dim">$</span> unlost recall
+
+Work in this workspace has shifted to designing a new CLI experience that helps
+users "project into the future" using grounded workspace memory, rather than
+a narrowly-scoped "challenge" command or hidden flags.
+
+- Rejected poor discoverability via flags on <span class="term-yellow">brief</span> (for example <span class="term-yellow">brief --challenge</span>)
+  and preferred a first-class command.
+- Re-scoped from "challenge past decision" to a broader forward-looking mode:
+  "this allows you to project into the future" (<span class="term-teal">explore</span>, <span class="term-teal">forecast</span>).
+- Corrected earlier drift toward a two-command design; returned to defining a
+  single intended experience.
+
+<span class="term-dim">Next steps (if any)</span>
+- Decide final command name/placement and keep it discoverable.
+- Define minimal input schema (goal, scope, constraints) and grounding sources.
+- Specify the output contract (tradeoffs + narrative + explicit assumptions).
+`;
+
 const faultTerminal = `<span class="term-dim">$</span> fault scenario run --scenario scenario.yaml
 
 <span class="term-dim">================ Running Scenarios ================</span>
@@ -157,6 +176,64 @@ const chaostoolkitTerm = `$ chaos run policy.json
         <div class="product__link">
           <a href="https://unfault.dev/docs" class="button button--primary"
             >Read the docs</a
+          >
+        </div>
+      </article>
+    </div>
+    <div class="productWrapper container">
+      <article class="product" style="--shadow-color: 55, 140, 206;">
+        <header class="product__header">
+          <h3>
+            <span class="screen-reader-text">Unlost</span>
+            <span class="productLogo" aria-hidden="true">
+              <span class="productWordmark">unlost</span>
+            </span>
+          </h3>
+          <p>Trajectory-based proactive regulator for AI coding agents</p>
+        </header>
+        <div class="product__content">
+          <ul class="productInfo list-reset">
+            <li class="productInfo__item">
+              <Icon name="feather/activity" />
+              <h4>Proactive Regulation</h4>
+              <p>
+                Models your collaboration trajectory with coding agents and
+                intervenes before stalls or drift burn time.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/crosshair" />
+              <h4>Catch Failure Modes Early</h4>
+              <p>
+                Detects coding-agent failure modes (Loop/Spec/Drift): apology
+                loops, context gaslighting, and expensive side-quests.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/layers" />
+              <h4>Local-First Memory</h4>
+              <p>
+                Extracts structured capsules from your agent runs (intent,
+                decisions, symbols) and keeps indexes on your machine.
+              </p>
+            </li>
+            <li class="productInfo__item">
+              <Icon name="feather/bar-chart" />
+              <h4>Measure The Babysitting Tax</h4>
+              <p>
+                Shows friction rate vs context size, and highlights hotspots
+                where coding-agent work starts to degrade.
+              </p>
+            </li>
+          </ul>
+          <div class="productMedia">
+            <Terminal content={unlostTerminal} />
+          </div>
+        </div>
+        <div class="product__link">
+          <a
+            href="https://unlost.unfault.dev/"
+            class="button button--primary">Read the docs</a
           >
         </div>
       </article>
